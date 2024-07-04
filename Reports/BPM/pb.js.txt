@@ -1,0 +1,110 @@
+/**
+ * Copyright (C) 1992-2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA,
+ * and/or its subsidiaries and/or its affiliates and/or their licensors.
+ *
+ * Use, reproduction, transfer, publication or disclosure is prohibited
+ * except as specifically provided for in your License Agreement with Software AG.
+ *
+ * Version: 10.0.22.0.3295151
+ *
+ * IMPORTANT NOTE:
+ *     Please note that this is a standard script provided with the product.
+ *     Any changes you make to this file will be overwritten during a product update and thus be irrecoverably lost.
+ *     If you want to adapt this script according to your individual needs, we urgently recommend that you create a copy of this file
+ *     and add your changes to the copy. The copied file will not be overwritten by a product update.
+ *     After a product update, it is advisable that you check your copied file against the updated version of the original file
+ *     and add all relevant changes or fixes to your copy.
+ */
+
+
+var offsetX = 135;
+var offsetY = 48+524;
+
+var factorX = 724.0;
+var factorY = 524.0;
+
+var minX    = offsetX;
+var maxX    = offsetX + factorX;
+
+var minY    = offsetY - factorY;
+var maxY    = offsetY;
+
+var mid1X, mid1Y, mid2X, mid2Y, wd, hd, dmX, dmY;
+
+function swapDivs(div1ID, div2ID)
+{
+  var div1 = document.getElementById(div1ID);
+  var div2 = document.getElementById(div2ID);
+   
+  var tmp = div1.style.zIndex;
+  div1.style.zIndex = div2.style.zIndex;
+  div2.style.zIndex = tmp;
+}
+
+
+  
+  // Test auf ueberlappung zweier Bereiche
+  function overlapps(objpos1, objpos2)
+  {
+    //alert(" checking overlap for objects ("+objpos1[0]+", "+objpos1[1]+") - ("+objpos2[0]+", "+objpos2[1]+")");
+    // Koordinaten Mittelpunkte der beiden Bereiche
+    mid1X = objpos1[0] + (objpos1[2]/2);
+    mid1Y = objpos1[1] + (objpos1[3]/2);
+    mid2X = objpos2[0] + (objpos2[2]/2);
+    mid2Y = objpos2[1] + (objpos2[3]/2);
+
+    // arithmet. Mittel der Breiten
+    wd = ((objpos1[2]+objpos2[2])/2);
+    hd = ((objpos1[3]+objpos2[3])/2);
+
+    // manhattan-distanz der Mittelpunkte (X):
+    dmX = (mid1X-mid2X);
+    dmX = dmX < 0 ? -dmX : dmX;
+
+    // manhattan-distanz der Mittelpunkte (Y):
+    dmY = (mid1Y-mid2Y);
+    dmY = dmY < 0 ? -dmY : dmY;
+
+    wdhalf = wd/2;
+    hdhalf = hd/2;
+    
+    if( dmX < wdhalf && dmY < hdhalf )
+    {
+      //alert("overlap dmX="+dmX+" wd/2="+wdhalf+" dmY="+dmY+" wh/2="+hdhalf);
+      return true;
+    }
+    
+//    alert("no overlap- returning false");
+   
+    return false;
+  }
+  
+  
+  function toggleOverlap(idx)
+  {
+    var otherIdx = 0;
+    if(overlappers[idx][0])
+    {
+      if(idx==lastOverlapObject)
+      {
+        if(lastOverlapIdx==-1)
+        {
+          lastOverlapIdx = 0;
+        }
+        else
+        {
+          if(lastOverlapIdx<overlappers[i].length-1)
+            lastOverlapIdx++;
+          else
+            lastOverlapIdx = 0;
+        }
+      }
+      else
+        lastOverlapIdx = 0;
+      //alert("lastOverlapIdx: "+lastOverlapIdx);
+      otherIdx = overlappers[idx][lastOverlapIdx+1];
+      
+      //alert("swapping "+idx+" with "+otherIdx);
+      swapDivs(("wkdocc"+idx),("wkdocc"+otherIdx));
+    }       
+  }

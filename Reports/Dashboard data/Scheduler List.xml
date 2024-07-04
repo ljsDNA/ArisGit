@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 1992-2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA,
+    and/or its subsidiaries and/or its affiliates and/or their licensors.
+
+    Use, reproduction, transfer, publication or disclosure is prohibited
+    except as specifically provided for in your License Agreement with Software AG.
+
+    Version: 10.0.22.0.3295151
+
+-->
+<schedules>
+    <task name="CXM_RESPONSIBLE_OWNER" report="3d6580f0-266a-11e6-7efc-5cf9dd7305ef" folder="CXM" />
+    <task name="CXM_ANALYZE_CUSTOMER_EXPERIENCE" report="6f288490-2659-11e6-7efc-5cf9dd7305ef" folder="CXM" />
+    <task name="CXM_RESPONSIBLE_CHANNEL" report="1eed9cb0-2ed1-11e6-2c6c-5cf9dd7305ef" folder="CXM" />   
+    <task name="CXM_CRITICAL_JOURNEYS" report="852c4990-2ed6-11e6-2c6c-5cf9dd7305ef" folder="CXM" />
+    <task name="CXM_ANALYZE_CUSTOMER_JOURNEYS" report="d0de4e50-48d6-11e6-16f2-5cf9dd7305ef" folder="CXM" />
+    <task name="QMS_LOCAL_AND_GLOBAL_MATURITY" report="a150de10-3c5f-11e6-046c-5cf9dd733057" folder="QMS" />
+    <task name="QMS_AGGREGATED_MATURITY" report="716cfb30-2c8c-11e6-67ec-5cf9dd733057" folder="QMS" />
+    <task name="EA_UNIT_SYSTEM" report="c93df660-2710-11e6-7efc-5cf9dd7305ef" folder="EA" />
+    <task name="EA_SYSTEM_LIFECYCLE" report="07469180-3777-11e6-2c6c-5cf9dd7305ef" folder="EA" />
+    <task name="EA_SYSTEM_REDUNDANCIES" report="86e7e9a0-3855-11e6-2c6c-5cf9dd7305ef" folder="EA" />
+    <task name="EA_CAPEX_OPEX" report="9f8979c0-3868-11e6-2c6c-5cf9dd7305ef" folder="EA" />
+    <task name="EA_SYSTEMS_WITH_DATA" report="ffdc7580-48d9-11e6-4e32-782bcb1f46fa" folder="EA" />
+    <task name="EA_SYSTEM_COSTS" report="e7f59880-556c-11e6-4e32-782bcb1f46fa" folder="EA" />
+    <task name="EA_SYSTEM_SUPPORTS" report="6e02fa80-5955-11e6-4e32-782bcb1f46fa" folder="EA" />
+    <task name="EA_SYSTEMS_VACD_SUPPORTS" report="2fdfd9d0-75a2-11e6-6136-5cf9dd7305ef" folder="EA" />
+</schedules>

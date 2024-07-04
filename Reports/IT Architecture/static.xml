@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 1992-2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA,
+    and/or its subsidiaries and/or its affiliates and/or their licensors.
+
+    Use, reproduction, transfer, publication or disclosure is prohibited
+    except as specifically provided for in your License Agreement with Software AG.
+
+    Version: 10.0.22.0.3295151
+
+-->
+<ReportRegistry>
+    <STATIC FileCount="7">
+        <File1>pb.css</File1>
+        <File2>pb.js.txt</File2>
+        <File3>pbwrite.js.txt</File3>
+        <File4>pfeil_hoch.gif</File4>
+        <File5>pfeil_rechts1.gif</File5>
+        <File6>pfeil_rechts2.gif</File6>
+        <File7>spacer.gif</File7>
+    </STATIC>
+</ReportRegistry>
+

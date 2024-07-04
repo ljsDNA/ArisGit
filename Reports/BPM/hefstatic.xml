@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 1992-2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA,
+    and/or its subsidiaries and/or its affiliates and/or their licensors.
+
+    Use, reproduction, transfer, publication or disclosure is prohibited
+    except as specifically provided for in your License Agreement with Software AG.
+
+    Version: 10.0.22.0.3295151
+
+-->
+<ReportRegistry>
+    <STATIC FileCount="13">
+        <File1>browseropt.js.txt</File1>
+        <File2>hef.css</File2>
+        <File3>hefpaint.js.txt</File3>
+        <File4>hefprint.css</File4>
+        <File5>heftext.js.txt</File5>
+        <File6>level1dot.gif</File6>
+        <File7>level2dot.gif</File7>
+        <File8>level3dot.gif</File8>
+        <File9>level4dot.gif</File9>
+        <File10>level5dot.gif</File10>
+        <File11>process.gif</File11>
+        <File12>spacer.gif</File12>
+        <File13>raphael.js.txt</File13>
+    </STATIC>
+</ReportRegistry>
+

@@ -1,0 +1,227 @@
+/**
+ * Copyright (C) 1992-2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA,
+ * and/or its subsidiaries and/or its affiliates and/or their licensors.
+ *
+ * Use, reproduction, transfer, publication or disclosure is prohibited
+ * except as specifically provided for in your License Agreement with Software AG.
+ *
+ * Version: 10.0.22.0.3295151
+ *
+ * IMPORTANT NOTE:
+ *     Please note that this is a standard script provided with the product.
+ *     Any changes you make to this file will be overwritten during a product update and thus be irrecoverably lost.
+ *     If you want to adapt this script according to your individual needs, we urgently recommend that you create a copy of this file
+ *     and add your changes to the copy. The copied file will not be overwritten by a product update.
+ *     After a product update, it is advisable that you check your copied file against the updated version of the original file
+ *     and add all relevant changes or fixes to your copy.
+ */
+
+	var colA = "#F48E20", colB = "#3A8931", colC = "#757471";
+	
+	// Create PATH -----------------------------------------------------------------------------------------------
+	var offsetX = 1, offsetY = 21;
+	var lineHeight  = 45;  
+	var lineOffsetY = 1;
+
+	var selfX = 18, selfY = 18;
+	var selfR = selfX/2;
+  	var A = Array(), B = Array(), C = Array();
+	var	pthW   	= 400;
+	var	pthH   	= rows.length*lineHeight;
+	
+	var r_path 	= Raphael('cnv_path', pthW, pthH);
+
+	var slots = Array();
+	slots[0] = 40;
+	slots[1] = 120;
+	slots[2] = 200;
+	slots[3] = 280;
+	slots[4] = 360;
+
+	var slotOffset_2 = Array();
+	slotOffset_2[0] = -15;
+	slotOffset_2[1] = +15;
+
+	var slotOffset_3 = Array();
+	slotOffset_3[0] = -25;
+	slotOffset_3[1] = 0;
+	slotOffset_3[2] = +25;
+
+
+	var lc = 0, li = -1;
+	var slotA, slotB, slotC, prevSlotA, prevSlotB, prevSlotC;
+	var AX, BX, CX, prevAX, prevBX, prevCX;
+
+	for(i=0;i<rows.length;i++){
+		if(!rows[i][2]){
+			var lh = offsetY + (i * lineHeight) + lineOffsetY;
+			slotA = rows[i][3][0];
+			slotB = rows[i][3][1];
+			slotC = rows[i][3][2];
+		  
+			if(slotA!=-1 && slotA==slotB && slotA==slotC){
+				//alert("Zeile " + lc + "ABC");
+				AX = slots[slotA] + slotOffset_3[0];
+				BX = slots[slotB] + slotOffset_3[1];
+				CX = slots[slotC] + slotOffset_3[2];
+			}
+			else if(slotC!=-1 && slotA==slotB){
+					//alert("Zeile " + lc + "AB");
+					AX = slots[slotA] + slotOffset_2[0];
+					BX = slots[slotB] + slotOffset_2[1];
+					CX = slots[slotC];
+			}
+			else if(slotB!=-1 && slotA==slotC){
+					//alert("Zeile " + lc + "AC");
+					AX = slots[slotA] + slotOffset_2[0];
+					BX = slots[slotB];
+					CX = slots[slotC] + slotOffset_2[1];
+			}
+			else if(slotA!=-1 && slotB==slotC){
+					//alert("Zeile " + lc + "BC");
+					AX = slots[slotA];
+					BX = slots[slotB] + slotOffset_2[0];
+					CX = slots[slotC] + slotOffset_2[1];
+			}
+			else{
+				AX = BX = CX = -1;
+						
+				AX = slotA!=-1 ? slots[slotA] : -1;
+				BX = slotB!=-1 ? slots[slotB] : -1;
+				CX = slotC!=-1 ? slots[slotC] : -1;
+						
+				// alert("slotA: "+slotA+"  slotB: "+slotB+"  slotC: "+slotC);
+				if(li>=0){
+				  prevSlotA = rows[li][3][0];
+				  prevSlotB = rows[li][3][1];
+				  prevSlotC = rows[li][3][2];
+				  if(slotA==prevSlotA)
+					AX = prevAX;
+
+				if(slotB==prevSlotB)
+					BX = prevBX;
+
+				if(slotC==prevSlotC)
+				  CX = prevCX;
+				}
+			}
+		  
+			A[lc] = Array();
+			A[lc][0] = offsetX + AX;
+			A[lc][1] = lh;
+			A[lc][2] = ! (slotA == -1);
+
+			B[lc] = Array();
+			B[lc][0] = offsetX + BX;
+			B[lc][1] = lh + selfR;
+			B[lc][2] = ! (slotB == -1);
+
+			C[lc] = Array();
+			C[lc][0] = offsetX + CX;
+			C[lc][1] = lh;
+			C[lc][2] = ! (slotC == -1);
+				
+			prevAX = AX==-1 ? prevAX : AX;
+			prevBX = BX==-1 ? prevBX : BX;
+			prevCX = CX==-1 ? prevCX : CX;
+			//alert("slotA: "+slotA+"  slotB: "+slotB+"  slotC: "+slotC);
+			lc++;
+			li = i;
+		}
+	}//END::for_i
+  
+	// Draw OWN_COMPANY
+	var prevX = (A[0][0] - selfR), prevY = A[0][1];
+	for(i=0; i<A.length; i++){
+		if( A[i][2] ){
+			r_path.rect( (A[i][0] - selfR), A[i][1], selfX, selfY, 0).attr({opacity: 1, fill: colA, 'stroke-width': 0});
+			if( i!= 0 ){
+				r_path.path("M " + (prevX + selfR)  + " " + (prevY + selfR) + " L " + (A[i][0])  + " " + (A[i][1] + selfR) ).attr({opacity: 1, 'stroke-width': 1, stroke: colA});
+			}
+			prevX = (A[i][0] - selfR);
+			prevY = A[i][1];
+		}
+	}//END::for_i
+	
+	// Draw OBJECTIVE
+	var prevX = B[0][0], prevY = B[0][1];
+	for(i=0; i<B.length; i++){
+		if( B[i][2] ){
+			r_path.circle( B[i][0], B[i][1], selfR ).attr({opacity: 1, fill: colB, 'stroke-width': 0});
+			if( i!= 0 ){
+				r_path.path("M " + prevX  + " " + prevY + " L " + B[i][0]  + " " + B[i][1] ).attr({opacity: 1, 'stroke-width': 1, stroke: colB});
+			}
+			prevX = B[i][0];
+			prevY = B[i][1];
+		}
+	}//END::for_i
+	
+	// Draw STRONGEST_COMPETITOR
+	var prevX = (C[0][0] - selfR),  prevY = C[0][1];
+	for(i=0; i<C.length; i++){
+		if( C[i][2] ){
+			r_path.rect( (C[i][0] - selfR), C[i][1], selfX, selfY, 0).attr({opacity: 1, fill: colC, 'stroke-width': 0}).rotate(45);
+			if( i!= 0 ){
+				r_path.path("M " + (prevX + selfR)  + " " + (prevY + selfR) + " L " + (C[i][0])  + " " + (C[i][1] + selfR) ).attr({opacity: 1, 'stroke-width': 1, stroke: colC});
+			}
+			prevX = (C[i][0] - selfR);
+			prevY = C[i][1];
+		}
+	}//END::for_i
+	// END::Create PATH ------------------------------------------------------------------------------------------
+	
+	
+	// Create LEGEND ---------------------------------------------------------------------------------------------
+	var	legW   	= 300;
+	var	legH   	= 120;
+	var legX 	= 30;
+	var legY 	= 20;
+	var nGap	= 50;
+
+	// Create canvas to draw on
+	var r_legend 	= Raphael('cnv_legend', legW, legH);
+	r_legend.clear();
+	var leg_border	= r_legend.rect(1, 1, 299, 119, 0);
+		leg_border.attr({stroke: '#303030', 'stroke-width': 1, fill: '#EEEEEE'});
+	r_legend.safari();
+	
+	// Create Legend title
+	var leg_title	= r_legend.text(legX-15, legY, LEGEND).attr({font: '18px Helvetica, Arial', 'font-weight':'bold', opacity: 1, fill: 'black', 'text-anchor': 'start'});
+	
+	//Create colA
+	var sX 		= legX;
+	var sY		= legY + leg_title.getBBox().height;
+	var	legTxtX	= (sX + 1.8*nGap);
+	var leg_rectA	= r_legend.rect(sX, sY, selfX, selfY, 0).attr({opacity: 1, fill: colA, 'stroke-width': 0});
+		r_legend.path("M " + (sX + leg_rectA.getBBox().width)  + " " + (sY + leg_rectA.getBBox().height / 2) + " h " + nGap).attr({opacity: 1, 'stroke-width': 1, stroke: colA});
+	var leg_rectA2	= r_legend.rect((sX + nGap), sY, selfX, selfY, 0).attr({opacity: 1, fill: colA, 'stroke-width': 0});
+		r_legend.text(legTxtX, (sY + leg_rectA.getBBox().height/2), OWN_COMPANY).attr({font: '14px Helvetica, Arial', opacity: 1, fill: colA, 'text-anchor': 'start'});
+		
+	//Create colB
+		sX 		= legX + selfR, sY	= sY + leg_rectA.getBBox().height + 15;
+	var leg_circB	= r_legend.circle(sX, sY, selfR).attr({opacity: 1, fill: colB, 'stroke-width': 0});
+		r_legend.path("M " + (sX + selfR)  + " " + sY  + " h " + nGap).attr({opacity: 1, 'stroke-width': 1, stroke: colB});
+	var	leg_circB2	= r_legend.circle((sX + nGap), sY, selfR).attr({opacity: 1, fill: colB, 'stroke-width': 0});
+		r_legend.text(legTxtX, sY, OBJECTIVE).attr({font: '14px Helvetica, Arial', opacity: 1, fill: colB, 'text-anchor': 'start'});
+	
+	// Create colC
+		sX 		= legX,	sY	= sY + 15;
+	var leg_rectC	= r_legend.rect(sX, sY, selfX, selfY, 0).attr({opacity: 1, fill: colC, 'stroke-width': 0}).rotate(45);
+		r_legend.path("M " + (sX + leg_rectC.getBBox().width/2)  + " " + (sY + leg_rectC.getBBox().height /(2*Math.sqrt(2))) + " h " + nGap).attr({opacity: 1, 'stroke-width': 1, stroke: colC});
+	var leg_rectC2	= r_legend.rect((sX + nGap), sY, selfX, selfY, 0).attr({opacity: 1, fill: colC, 'stroke-width': 0}).rotate(45);
+		r_legend.text(legTxtX, (sY + leg_rectC.getBBox().height/(2*Math.sqrt(2))), STRONGEST_COMPETITOR).attr({font: '14px Helvetica, Arial', opacity: 1, fill: colC, 'text-anchor': 'start'});
+	// END::Create LEGEND ----------------------------------------------------------------------------------------
+	
+	(function() {
+		var corner = document.getElementById("cnv_corner");
+		var canvas = document.getElementById("cnv_path");
+		var offsetTop = corner.offsetTop  + 40;
+		var offsetLeft = corner.offsetLeft + 40;
+		if(isIE()) {
+			offsetTop += 18;
+			offsetLeft += 12;
+		}
+		canvas.style.top = offsetTop;
+		canvas.style.left = offsetLeft;
+	})();	
+};

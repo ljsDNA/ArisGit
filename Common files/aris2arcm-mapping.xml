@@ -1,0 +1,1283 @@
+<!--
+
+    Copyright (C) 1992-2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA,
+    and/or its subsidiaries and/or its affiliates and/or their licensors.
+
+    Use, reproduction, transfer, publication or disclosure is prohibited
+    except as specifically provided for in your License Agreement with Software AG.
+
+    Version: 10.0.22.0.3295151
+
+-->
+<aris2arcm>
+
+    <!-- ~~~~~~~~~~~~~~~ -->
+	<!-- Model mapping -->
+    <mappingModel id="PROCESS_HIERARCHY_MODELS"
+            model_typenums="MT_BPMN_PROCESS_DIAGRAM,MT_ENTERPRISE_BPMN_PROCESS,MT_EEPC,MT_EEPC_MAT,MT_EEPC_ROW,MT_EEPC_COLUMN,MT_EEPC_TAB,MT_EEPC_TAB_HORIZONTAL,MT_FUNC_TREE,MT_VAL_ADD_CHN_DGM,MT_EEPC_INST" 
+            mapping_object_refs="HIERARCHY_PROCESS">
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+    </mappingModel>
+    <mappingModel id="DATA_CLUSTER_HIERARCHY_MODELS"
+            model_typenums="MT_EERM,MT_IEF_DATA_MDL" 
+            mapping_object_refs="HIERARCHY_DATA">
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+    </mappingModel>
+    <mappingModel id="ORG_UNIT_HIERARCHY_MODELS"
+            model_typenums="MT_ORG_CHRT,MT_EEPC" 
+            mapping_object_refs="HIERARCHY_ORGUNIT,USERGROUP">
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+    </mappingModel>
+    <mappingModel id="TESTER_HIERARCHY_MODELS"
+            model_typenums="MT_ORG_CHRT" 
+            mapping_object_refs="USERGROUP">
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+    </mappingModel>
+    <mappingModel id="REGULATION_HIERARCHY_MODELS"
+            model_typenums="MT_TECH_TRM_MDL,MT_REGULATION_MODEL,MT_REGULATION_ALLOCATION_DIAG" 
+            mapping_object_refs="HIERARCHY_REGULATION_TECH_TERM,HIERARCHY_REGULATION_CLAUSE,HIERARCHY_REGULATION_CHAPTER,HIERARCHY_REGULATION_REGULATION,HIERARCHY_REGULATION_CATEGORY">
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+    </mappingModel>
+	<mappingModel id="REGULATION_MODELS"
+            model_typenums="MT_REGULATION_ALLOCATION_DIAG,MT_REGULATION_MODEL,MT_REQUIREMENTS_TREE,MT_REQUIREMENT_ALLOCATION_DIAGRAM" 
+            mapping_object_refs="REGULATORYREQUIREMENT,COMPLIANCEASSESSMENTDEF,RISK,POLICYDEFINITION">
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+    </mappingModel>	
+    <mappingModel id="RISK_CATEGORY_HIERARCHY_MODELS"
+            model_typenums="MT_RISK_DGM" 
+            mapping_object_refs="HIERARCHY_RISKCAT,RISK">
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+    </mappingModel>
+	<mappingModel id="RISK_AND_CONTORL_MODELS"
+            model_typenums="MT_BUSY_CONTR_DGM" 
+            mapping_object_refs="RISK,CONTROL">
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+    </mappingModel>
+    <mappingModel id="APPLICATION_SYSTEM_TYPE_HIERARCHY_MODELS"
+            model_typenums="MT_APPL_SYS_TYPE_DGM,MT_EEPC" 
+            mapping_object_refs="HIERARCHY_APPSYSTYPE_TYPE">
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+    </mappingModel>
+	<mappingModel id="SURVEY_MODELS"
+            model_typenums="MT_SURVEY_MGMT" 
+            mapping_object_refs="QUESTIONNAIRE_TEMPLATE">
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+    </mappingModel>
+	<mappingModel id="POLICY_MODELS"
+            model_typenums="MT_BRD_BUSINESS_RULE_ARCHITECTURE_DIAGRAM,MT_BUSY_CONTR_DGM" 
+            mapping_object_refs="POLICYDEFINITION">
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+    </mappingModel> 
+	<mappingModel id="AUDIT_MODELS"
+            model_typenums="MT_PROJECT_SCHEDULE" 
+            mapping_object_refs="AUDITTEMPLATE">
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+    </mappingModel>
+   
+    <!-- ~~~~~~~~~~~~~~~~~~~ -->
+	<!-- Enumeration mapping -->
+	<!-- USERGROUP -->
+	<mappingEnum arcm_enum="userrole_type" is_multiple="false">
+        <enumItem id="auditauditor"             aris_typenum="AVT_ARCM_ROLE_AUDITAUDITOR"/>             <!--enumeration.userrole_type.auditauditor.DBI-->
+        <enumItem id="auditowner"               aris_typenum="AVT_ARCM_ROLE_AUDITOWNER"/>               <!--enumeration.userrole_type.auditowner.DBI-->
+        <enumItem id="auditmanager"             aris_typenum="AVT_ARCM_ROLE_AUDITMANAGER"/>             <!--enumeration.userrole_type.auditmanager.DBI-->
+        <enumItem id="auditreviewer"            aris_typenum="AVT_ARCM_ROLE_AUDITREVIEWER"/>            <!--enumeration.userrole_type.auditreviewer.DBI-->
+        <enumItem id="auditstepowner"           aris_typenum="AVT_ARCM_ROLE_AUDITSTEPOWNER"/>           <!--enumeration.userrole_type.auditstepowner.DBI-->
+        <enumItem id="controlauditor"           aris_typenum="AVT_ARCM_ROLE_CONTROLAUDITOR"/>           <!--enumeration.userrole_type.controlauditor.DBI-->
+        <enumItem id="controlexecutionowner"    aris_typenum="AVT_ARCM_ROLE_CONTROLEXECUTIONOWNER"/>    <!--enumeration.userrole_type.controlexecutionowner.DBI-->
+        <enumItem id="controlmanager"           aris_typenum="AVT_ARCM_ROLE_CONTROLMANAGER"/>           <!--enumeration.userrole_type.controlmanager.DBI-->
+        <enumItem id="deficiencyauditor_l1"     aris_typenum="AVT_ARCM_ROLE_DEFICIENCYAUDITOR_L1"/>     <!--enumeration.userrole_type.deficiencyauditor_l1.DBI-->
+        <enumItem id="deficiencyauditor_l2"     aris_typenum="AVT_ARCM_ROLE_DEFICIENCYAUDITOR_L2"/>     <!--enumeration.userrole_type.deficiencyauditor_l2.DBI-->
+        <enumItem id="deficiencyauditor_l3"     aris_typenum="AVT_ARCM_ROLE_DEFICIENCYAUDITOR_L3"/>     <!--enumeration.userrole_type.deficiencyauditor_l3.DBI-->
+        <enumItem id="deficiencymanager_l1"     aris_typenum="AVT_ARCM_ROLE_DEFICIENCYMANAGER_L1"/>     <!--enumeration.userrole_type.deficiencymanager_l1.DBI-->
+        <enumItem id="deficiencymanager_l2"     aris_typenum="AVT_ARCM_ROLE_DEFICIENCYMANAGER_L2"/>     <!--enumeration.userrole_type.deficiencymanager_l2.DBI-->
+        <enumItem id="deficiencymanager_l3"     aris_typenum="AVT_ARCM_ROLE_DEFICIENCYMANAGER_L3"/>     <!--enumeration.userrole_type.deficiencymanager_l3.DBI-->
+        <enumItem id="hierarchyauditor"         aris_typenum="AVT_ARCM_ROLE_HIERARCHYAUDITOR"/>         <!--enumeration.userrole_type.hierarchyauditor.DBI--> 
+        <enumItem id="hierarchymanager"         aris_typenum="AVT_ARCM_ROLE_HIERARCHYMANAGER"/>         <!--enumeration.userrole_type.hierarchymanager.DBI-->
+        <enumItem id="hierarchyowner"           aris_typenum="AVT_ARCM_ROLE_HIERARCHYOWNER"/>           <!--enumeration.userrole_type.hierarchyowner.DBI-->
+        <enumItem id="incidentauditor"          aris_typenum="AVT_ARCM_ROLE_INCIDENTAUDITOR"/>          <!--enumeration.userrole_type.incidentauditor.DBI-->
+        <enumItem id="incidentmanager"          aris_typenum="AVT_ARCM_ROLE_INCIDENTMANAGER"/>          <!--enumeration.userrole_type.incidentmanager.DBI-->
+        <enumItem id="incidentowner"            aris_typenum="AVT_ARCM_ROLE_INCIDENTOWNER"/>            <!--enumeration.userrole_type.incidentowner.DBI-->
+        <enumItem id="incidentreviewer"         aris_typenum="AVT_ARCM_ROLE_INCIDENTREVIEWER"/>         <!--enumeration.userrole_type.incidentreviewer.DBI-->
+        <enumItem id="issueauditor"             aris_typenum="AVT_ARCM_ROLE_ISSUEAUDITOR"/>             <!--enumeration.userrole_type.issueauditor.DBI-->            
+        <enumItem id="issuemanager"             aris_typenum="AVT_ARCM_ROLE_ISSUEMANAGER"/>             <!--enumeration.userrole_type.issuemanager.DBI-->
+        <enumItem id="lossauditor"              aris_typenum="AVT_ARCM_ROLE_LOSSAUDITOR"/>              <!--enumeration.userrole_type.lossauditor.DBI-->
+        <enumItem id="lossmanager"              aris_typenum="AVT_ARCM_ROLE_LOSSMANAGER"/>              <!--enumeration.userrole_type.lossmanager.DBI-->
+        <enumItem id="lossowner"                aris_typenum="AVT_ARCM_ROLE_LOSSOWNER"/>                <!--enumeration.userrole_type.lossowner.DBI-->
+        <enumItem id="lossreviewer"             aris_typenum="AVT_ARCM_ROLE_LOSSREVIEWER"/>             <!--enumeration.userrole_type.lossreviewer.DBI-->
+        <enumItem id="policyaddressee"          aris_typenum="AVT_ARCM_ROLE_POLICYADDRESSEE"/>          <!--enumeration.userrole_type.policyaddressee.DBI-->
+        <enumItem id="policyapprover"           aris_typenum="AVT_ARCM_ROLE_POLICYAPPROVER"/>           <!--enumeration.userrole_type.policyapprover.DBI-->
+        <enumItem id="policyauditor"            aris_typenum="AVT_ARCM_ROLE_POLICYAUDITOR"/>            <!--enumeration.userrole_type.policyauditor.DBI-->
+        <enumItem id="policymanager"            aris_typenum="AVT_ARCM_ROLE_POLICYMANAGER"/>            <!--enumeration.userrole_type.policymanager.DBI-->           
+        <enumItem id="policyowner"              aris_typenum="AVT_ARCM_ROLE_POLICYOWNER"/>              <!--enumeration.userrole_type.policyowner.DBI-->
+        <enumItem id="questionnaireowner"       aris_typenum="AVT_ARCM_ROLE_QUESTIONNAIREOWNER"/>       <!--enumeration.userrole_type.questionnaireowner.DBI-->  
+        <enumItem id="riskauditor"              aris_typenum="AVT_ARCM_ROLE_RISKAUDITOR"/>              <!--enumeration.userrole_type.riskauditor.DBI-->
+        <enumItem id="riskmanager"              aris_typenum="AVT_ARCM_ROLE_RISKMANAGER"/>              <!--enumeration.userrole_type.riskmanager.DBI-->
+        <enumItem id="riskowner"                aris_typenum="AVT_ARCM_ROLE_RISKOWNER"/>                <!--enumeration.userrole_type.riskowner.DBI-->
+        <enumItem id="riskreviewer"             aris_typenum="AVT_ARCM_ROLE_RISKREVIEWER"/>             <!--enumeration.userrole_type.riskreviewer.DBI-->
+        <enumItem id="signoffmanager"           aris_typenum="AVT_ARCM_ROLE_SIGNOFFMANAGER"/>           <!--enumeration.userrole_type.signoffmanager.DBI-->
+        <enumItem id="signoffowner"             aris_typenum="AVT_ARCM_ROLE_SIGNOFFOWNER"/>             <!--enumeration.userrole_type.signoffowner.DBI-->
+        <enumItem id="signoffreviewer"          aris_typenum="AVT_ARCM_ROLE_SIGNOFFREVIEWER"/>          <!--enumeration.userrole_type.signoffreviewer.DBI-->
+        <enumItem id="surveyauditor"            aris_typenum="AVT_ARCM_ROLE_SURVEYAUDITOR"/>            <!--enumeration.userrole_type.surveyauditor.DBI-->
+        <enumItem id="surveymanager"            aris_typenum="AVT_ARCM_ROLE_SURVEYMANAGER"/>            <!--enumeration.userrole_type.surveymanager.DBI-->
+        <enumItem id="surveyreviewer"           aris_typenum="AVT_ARCM_ROLE_SURVEYREVIEWER"/>           <!--enumeration.userrole_type.surveyreviewer.DBI-->
+        <enumItem id="testauditor"              aris_typenum="AVT_ARCM_ROLE_TESTAUDITOR"/>              <!--enumeration.userrole_type.testauditor.DBI-->
+        <enumItem id="testauditorexternal"      aris_typenum="AVT_ARCM_ROLE_TESTAUDITOREXTERNAL"/>      <!--enumeration.userrole_type.testauditorexternal.DBI-->
+        <enumItem id="tester"                   aris_typenum="AVT_ARCM_ROLE_TESTER"/>                   <!--enumeration.userrole_type.tester.DBI-->
+        <enumItem id="testmanager"              aris_typenum="AVT_ARCM_ROLE_TESTMANAGER"/>              <!--enumeration.userrole_type.testmanager.DBI-->
+        <enumItem id="testreviewer"             aris_typenum="AVT_ARCM_ROLE_TESTREVIEWER"/>             <!--enumeration.userrole_type.testreviewer.DBI-->
+        <enumItem id="regulationmanager"        aris_typenum="AVT_ARCM_ROLE_REGULATIONMANAGER"/>        <!--enumeration.userrole_type.regulationmanager.DBI-->
+        <enumItem id="regulationowner"          aris_typenum="AVT_ARCM_ROLE_REGULATIONOWNER"/>          <!--enumeration.userrole_type.regulationowner.DBI-->
+        <enumItem id="regulationreviewer"       aris_typenum="AVT_ARCM_ROLE_REGULATIONREVIEWER"/>       <!--enumeration.userrole_type.regulationreviewer.DBI-->
+        <enumItem id="regulationauditor"        aris_typenum="AVT_ARCM_ROLE_REGULATIONAUDITOR"/>        <!--enumeration.userrole_type.regulationauditor.DBI-->    
+     </mappingEnum>
+     <mappingEnum arcm_enum="userrole_level" is_multiple="false"> 
+        <enumItem id="crossclient"   aris_typenum="AVT_ARCM_ROLE_LEVEL_CROSSCLIENT"/>   <!--enumeration.userrole_level.crossclient.DBI-->
+        <enumItem id="client"        aris_typenum="AVT_ARCM_ROLE_LEVEL_CLIENT"/>        <!--enumeration.userrole_level.client.DBI-->
+        <enumItem id="object"        aris_typenum="AVT_ARCM_ROLE_LEVEL_OBJECT"/>        <!--enumeration.userrole_level.object.DBI-->
+     </mappingEnum>
+	<!-- HIERARCHY -->
+    <mappingEnum arcm_enum="hierarchy_type" is_multiple="false">
+		<enumItem id="tester"                   aris_typenum=""/>   <!--enumeration.hierarchy_type.tester.DBI-->
+		<enumItem id="financialaccount"         aris_typenum=""/>   <!--enumeration.hierarchy_type.financialaccount.DBI-->
+        <enumItem id="orgunit"                  aris_typenum=""/>   <!--enumeration.hierarchy_type.orgunit.DBI-->
+        <enumItem id="process"                  aris_typenum=""/>   <!--enumeration.hierarchy_type.process.DBI-->
+        <enumItem id="category"                 aris_typenum=""/>   <!--enumeration.hierarchy_type.category.DBI-->
+        <enumItem id="applicationsystemtype"    aris_typenum=""/>   <!--enumeration.hierarchy_type.applicationsystemtype.DBI-->
+        <enumItem id="datacluster"              aris_typenum=""/>   <!--enumeration.hierarchy_type.datacluster.DBI-->
+	</mappingEnum> 
+	<!-- RISK -->
+	<mappingEnum arcm_enum="risktype" is_multiple="true">
+		<enumItem id="financial_reporting" 	aris_typenum="AT_AAM_RISK_TYPE_FINANCIAL_REPORT"/>  <!--enumeration.risktype.financial_reporting.DBI-->
+		<enumItem id="compliance"           aris_typenum="AT_AAM_RISK_TYPE_COMPLIANCE"/>        <!--enumeration.risktype.compliance.DBI-->
+		<enumItem id="operations"           aris_typenum="AT_AAM_RISK_TYPE_OPERATIONS"/>        <!--enumeration.risktype.operations.DBI-->
+		<enumItem id="strategic"            aris_typenum="AT_AAM_RISK_TYPE_STRATEGIC"/>         <!--enumeration.risktype.operations.DBI-->
+	</mappingEnum>
+	<mappingEnum arcm_enum="impact" is_multiple="false">
+		<enumItem id="unspecified"  aris_typenum=""/>                           <!--enumeration.impact.unspecified.DBI-->
+		<enumItem id="minor"        aris_typenum="AVT_AAM_IMPACT_LOW"/>         <!--enumeration.impact.minor.DBI-->
+		<enumItem id="moderate"     aris_typenum="AVT_AAM_IMPACT_MODERATE"/>    <!--enumeration.impact.moderate.DBI-->
+		<enumItem id="critical"     aris_typenum="AVT_AAM_IMPACT_CRITICAL"/>    <!--enumeration.impact.critical.DBI-->
+		<enumItem id="fundamental" 	aris_typenum="AVT_AAM_IMPACT_DISASTROUS"/>  <!--enumeration.impact.fundamental.DBI-->
+	</mappingEnum>
+	<mappingEnum arcm_enum="probability" is_multiple="false">
+		<enumItem id="unspecified"      aris_typenum=""/>                                   <!--enumeration.probability.unspecified.DBI-->
+		<enumItem id="rare"             aris_typenum="AVT_AAM_PROBABILITY_RARE"/>           <!--enumeration.probability.rare.DBI-->
+		<enumItem id="moderate"         aris_typenum="AVT_AAM_PROBABILITY_MODERATE"/>       <!--enumeration.probability.moderate.DBI-->
+		<enumItem id="likely"           aris_typenum="AVT_AAM_PROBABILITY_LIKELY"/>         <!--enumeration.probability.likely.DBI-->
+		<enumItem id="almostcertain"    aris_typenum="AVT_AAM_PROBABILITY_ALMOST_CERTAIN"/> <!--enumeration.probability.almostcertain.DBI-->
+	</mappingEnum>
+	<mappingEnum arcm_enum="assertion" is_multiple="true">
+		<enumItem id="existence_occurrence"     aris_typenum="AT_AAM_ASSERTIONS_EXIST_OCCURRENCE"/>         <!--enumeration.assertion.existence_occurrence.DBI-->
+		<enumItem id="completeness"             aris_typenum="AT_AAM_ASSERTIONS_COMPLETENESS"/>             <!--enumeration.assertion.completeness.DBI-->
+		<enumItem id="rights_obligations"       aris_typenum="AT_AAM_ASSERTIONS_RIGHTS_OBLIGATIONS"/>       <!--enumeration.assertion.rights_obligations.DBI-->
+		<enumItem id="valuation_allocation"     aris_typenum="AT_AAM_ASSERTIONS_VALUATION_ALLOCATION"/>     <!--enumeration.assertion.valuation_allocation.DBI-->
+		<enumItem id="presentation_disclosure"  aris_typenum="AT_AAM_ASSERTIONS_PRESENTATION_DISCLOSURE"/>  <!--enumeration.assertion.presentation_disclosure.DBI-->
+		<enumItem id="na"                       aris_typenum="AT_AAM_ASSERTIONS_NA"/>                       <!--enumeration.assertion.na.DBI-->
+	</mappingEnum>
+	<!-- ARIS attributes for frequencies are different, ARCM frequency is unified as "frequency_including_none" -->
+	<!-- for this reason there is an additional 'aris_enum' attribute used -->
+	<mappingEnum aris_enum="assessment_frequency" arcm_enum="frequency_including_none" is_multiple="false">
+		<enumItem id="unspecified"      aris_typenum=""/>
+		<enumItem id="oneoff"           aris_typenum="AVT_RM_ASSESSMENT_FREQUENCY_ONE_OFF"/>        <!--enumeration.frequency_including_none.oneoff.DBI-->
+		<enumItem id="daily"            aris_typenum="AVT_RM_ASSESSMENT_FREQUENCY_DAILY"/>          <!--enumeration.frequency_including_none.daily.DBI-->
+		<enumItem id="weekly"           aris_typenum="AVT_RM_ASSESSMENT_FREQUENCY_WEEKLY"/>         <!--enumeration.frequency_including_none.weekly.DBI-->
+		<enumItem id="monthly"          aris_typenum="AVT_RM_ASSESSMENT_FREQUENCY_MONTHLY"/>        <!--enumeration.frequency_including_none.monthly.DBI-->
+		<enumItem id="quarterly"        aris_typenum="AVT_RM_ASSESSMENT_FREQUENCY_QUARTERLY"/>      <!--enumeration.frequency_including_none.quarterly.DBI-->
+		<enumItem id="semiannually"     aris_typenum="AVT_RM_ASSESSMENT_FREQUENCY_SEMIANNUALLY"/>   <!--enumeration.frequency_including_none.semiannually.DBI-->
+		<enumItem id="annually"         aris_typenum="AVT_RM_ASSESSMENT_FREQUENCY_ANNUALLY"/>       <!--enumeration.frequency_including_none.annually.DBI-->
+		<enumItem id="everysecondyear"  aris_typenum="AVT_EVERY_2ND_YEAR"/>                         <!--enumeration.frequency_including_none.everysecondyear.DBI-->
+		<enumItem id="none"             aris_typenum="AVT_RM_ASSESSMENT_FREQUENCY_EVENT_DRIVEN"/>   <!--enumeration.frequency_including_none.eventdriven.DBI-->
+	</mappingEnum>
+	<!-- CONTROL -->
+	<mappingEnum arcm_enum="controlexecution" is_multiple="true">
+		<enumItem id="manual"   aris_typenum="AT_AAM_CTRL_EXECUTION_MANUAL"/>   <!--enumeration.controlexecution.manual.DBI-->
+		<enumItem id="it"       aris_typenum="AT_AAM_CTRL_EXECUTION_IT"/>       <!--enumeration.controlexecution.it.DBI-->
+	</mappingEnum>
+	<mappingEnum arcm_enum="controlfrequency" is_multiple="false">
+		<enumItem id="unspecified"  aris_typenum=""/>                                       <!--enumeration.controlfrequency.unspecified.DBI-->
+		<enumItem id="daily"        aris_typenum="AVT_AAM_CTRL_FREQUENCY_DAILY"/>           <!--enumeration.controlfrequency.daily.DBI-->
+		<enumItem id="weekly"       aris_typenum="AVT_AAM_CTRL_FREQUENCY_WEEKLY"/>          <!--enumeration.controlfrequency.weekly.DBI-->
+		<enumItem id="monthly"      aris_typenum="AVT_AAM_CTRL_FREQUENCY_MONTHLY"/>         <!--enumeration.controlfrequency.monthly.DBI-->
+		<enumItem id="quarterly"    aris_typenum="AVT_AAM_CTRL_FREQUENCY_QUARTERLY"/>       <!--enumeration.controlfrequency.quarterly.DBI-->
+		<enumItem id="semiannually" aris_typenum="AVT_AAM_CTRL_FREQUENCY_SEMIANNUALLY"/>    <!--enumeration.controlfrequency.semiannually.DBI-->
+		<enumItem id="annually"     aris_typenum="AVT_AAM_CTRL_FREQUENCY_ANNUALLY"/>        <!--enumeration.controlfrequency.annually.DBI-->
+		<enumItem id="eventdriven"  aris_typenum="AVT_AAM_CTRL_FREQUENCY_EVENT_DRIVEN"/>    <!--enumeration.controlfrequency.eventdriven.DBI-->
+	</mappingEnum>
+	<mappingEnum arcm_enum="controleffect" is_multiple="false">
+		<enumItem id="preventive"   aris_typenum="AVT_AAM_CTRL_EFFECT_PREVENTIVE"/> <!--enumeration.controleffect.preventive.DBI-->
+		<enumItem id="revealing"    aris_typenum="AVT_AAM_CTRL_EFFECT_REVEALING"/>  <!--enumeration.controleffect.revealing.DBI-->            
+		<enumItem id="corrective"   aris_typenum="AVT_AAM_CTRL_EFFECT_CORRECTIVE"/> <!--enumeration.controleffect.corrective.DBI--> 
+	</mappingEnum>
+	<mappingEnum arcm_enum="controltype" is_multiple="true">
+		<enumItem id="environment"      aris_typenum="AT_AAM_COSO_COMPONENT_CRTL_ENVIRONMENT"/>     <!--enumeration.controltype.environment.DBI-->
+		<enumItem id="risk_assessment"  aris_typenum="AT_AAM_COSO_COMPONENT_RISK_ASSESSMENT"/>      <!--enumeration.controltype.risk_assessment.DBI-->
+		<enumItem id="activity"         aris_typenum="AT_AAM_COSO_COMPONENT_CTRL_ACTIVITIES"/>      <!--enumeration.controltype.activity.DBI-->
+		<enumItem id="information"      aris_typenum="AT_AAM_COSO_COMPONENT_INFO_COMMUNICATION"/>   <!--enumeration.controltype.information.DBI-->
+		<enumItem id="monitoring"       aris_typenum="AT_AAM_COSO_COMPONENT_MONITORING"/>           <!--enumeration.controltype.monitoring.DBI-->
+	</mappingEnum>
+	<!-- CONTROLEXECUTIONTASK -->
+	<mappingEnum aris_enum="controlexecutiontask_frequency" arcm_enum="frequency_including_none" is_multiple="false">
+		<enumItem id="all"                aris_typenum=""/>                   <!--enumeration.frequency.all.DBI-->
+		<enumItem id="unspecified"        aris_typenum=""/>                   <!--enumeration.frequency.unspecified.DBI-->
+		<enumItem id="oneoff"             aris_typenum="AVT_ONE_OFF"/>        <!--enumeration.frequency.oneoff.DBI-->
+		<enumItem id="daily"              aris_typenum="AVT_DAILY"/>          <!--enumeration.frequency.daily.DBI-->
+		<enumItem id="weekly"             aris_typenum="AVT_WEEKLY"/>         <!--enumeration.frequency.weekly.DBI-->
+		<enumItem id="monthly"            aris_typenum="AVT_MONTHLY"/>        <!--enumeration.frequency.monthly.DBI-->
+		<enumItem id="quarterly"          aris_typenum="AVT_QUARTERLY"/>      <!--enumeration.frequency.quarterly.DBI-->
+		<enumItem id="semiannually"       aris_typenum="AVT_SEMIANNUALLY"/>   <!--enumeration.frequency.semiannually.DBI-->
+		<enumItem id="annually"           aris_typenum="AVT_ANNUALLY"/>       <!--enumeration.frequency.annually.DBI-->
+		<enumItem id="everysecondyear"    aris_typenum="AVT_EVERY_2ND_YEAR"/> <!--enumeration.frequency.everysecondyear.DBI-->
+		<enumItem id="none"               aris_typenum="AVT_EVENT_DRIVEN"/>   <!--enumeration.frequency_including_none.none.DBI-->              
+	</mappingEnum>
+	<mappingEnum aris_enum="controlexecutiontask_controlperiod" arcm_enum="controlperiod" is_multiple="false">
+		<enumItem id="unspecified"    aris_typenum=""/>               <!--enumeration.controlperiod.unspecified.DBI-->
+		<enumItem id="day"            aris_typenum="AVT_DAY"/>        <!--enumeration.controlperiod.day.DBI-->
+		<enumItem id="week"           aris_typenum="AVT_WEEK"/>       <!--enumeration.controlperiod.week.DBI-->
+		<enumItem id="month"          aris_typenum="AVT_MONTH"/>      <!--enumeration.controlperiod.month.DBI-->
+		<enumItem id="quarter"        aris_typenum="AVT_QUARTER"/>    <!--enumeration.controlperiod.quarter.DBI-->
+		<enumItem id="semiannual"     aris_typenum="AVT_SEMIANNUAL"/> <!--enumeration.controlperiod.semiannual.DBI-->
+		<enumItem id="year"           aris_typenum="AVT_YEAR"/>       <!--enumeration.controlperiod.year.DBI-->
+		<enumItem id="twoyears"        aris_typenum="AVT_TWO_YEARS"/>       <!--enumeration.controlperiod.twoyears.DBI-->
+	</mappingEnum>
+	<!-- TESTDEFINITION -->
+	<mappingEnum arcm_enum="natureoftest" is_multiple="true">
+		<enumItem id="inquiry"          aris_typenum="AT_AAM_TEST_NATURE_INQUIRY"/>         <!--enumeration.natureoftest.inquiry.DBI-->
+		<enumItem id="observation"      aris_typenum="AT_AAM_TEST_NATURE_OBSERVATION"/>     <!--enumeration.natureoftest.observation.DBI-->
+		<enumItem id="examination"      aris_typenum="AT_AAM_TEST_NATURE_EXAMINATION"/>     <!--enumeration.natureoftest.examination.DBI-->
+		<enumItem id="reperformance"    aris_typenum="AT_AAM_TEST_NATURE_REPERFORMANCE"/>   <!--enumeration.natureoftest.reperformance.DBI-->
+	</mappingEnum>
+	<mappingEnum arcm_enum="testtype" is_multiple="true">
+		<enumItem id="testofdesign"         aris_typenum="AT_AAM_TEST_TYPE_DESIGN"/>        <!--enumeration.testtype.testofdesign.DBI-->
+		<enumItem id="testofeffectiveness"  aris_typenum="AT_AAM_TEST_TYPE_EFFECTIVENESS"/> <!--enumeration.testtype.testofeffectiveness.DBI-->
+	</mappingEnum>
+	<mappingEnum aris_enum="testcase_controlperiod" arcm_enum="controlperiod" is_multiple="false"> <!-- inherited from RECURRING -->
+		<enumItem id="day"          aris_typenum="AVT_AAM_TESTDEF_CRTL_PERIOD_DAY"/>        <!--enumeration.controlperiod.day.DBI-->
+		<enumItem id="week"         aris_typenum="AVT_AAM_TESTDEF_CRTL_PERIOD_WEEK"/>       <!--enumeration.controlperiod.week.DBI-->
+		<enumItem id="month"        aris_typenum="AVT_AAM_TESTDEF_CRTL_PERIOD_MONTH"/>      <!--enumeration.controlperiod.month.DBI-->
+		<enumItem id="quarter"      aris_typenum="AVT_AAM_TESTDEF_CRTL_PERIOD_QUARTER"/>    <!--enumeration.controlperiod.quarter.DBI-->
+		<enumItem id="semiannual"   aris_typenum="AVT_AAM_TESTDEF_CRTL_PERIOD_SEMIANNUAL"/> <!--enumeration.controlperiod.semiannual.DBI-->
+		<enumItem id="year"         aris_typenum="AVT_AAM_TESTDEF_CRTL_PERIOD_YEAR"/>       <!--enumeration.controlperiod.year.DBI-->
+		<enumItem id="twoyears"     aris_typenum="AVT_TWO_YEARS"/>                          <!--enumeration.controlperiod.year.DBI-->            
+	</mappingEnum>
+	<!-- ARIS attributes for frequencies are different, ARCM frequency is unified as "frequency_including_none" -->
+	<!-- for this reason there is an additional 'aris_enum' attribute used -->
+	<mappingEnum aris_enum="testcase_frequency" arcm_enum="frequency_including_none" is_multiple="false">
+		<enumItem id="oneoff"             aris_typenum="AVT_AAM_TEST_FREQUENCY_ONE_OFF"/>         <!--enumeration.frequency_including_none.oneoff.DBI-->
+		<enumItem id="daily"              aris_typenum="AVT_AAM_TEST_FREQUENCY_DAILY"/>           <!--enumeration.frequency_including_none.daily.DBI-->
+		<enumItem id="weekly"             aris_typenum="AVT_AAM_TEST_FREQUENCY_WEEKLY"/>          <!--enumeration.frequency_including_none.weekly.DBI-->
+		<enumItem id="monthly"            aris_typenum="AVT_AAM_TEST_FREQUENCY_MONTHLY"/>         <!--enumeration.frequency_including_none.monthly.DBI-->
+		<enumItem id="quarterly"          aris_typenum="AVT_AAM_TEST_FREQUENCY_QUARTERLY"/>       <!--enumeration.frequency_including_none.quarterly.DBI-->
+		<enumItem id="semiannually"       aris_typenum="AVT_AAM_TEST_FREQUENCY_SEMIANNUALLY"/>    <!--enumeration.frequency_including_none.semiannually.DBI-->
+		<enumItem id="annually"           aris_typenum="AVT_AAM_TEST_FREQUENCY_ANNUALLY"/>        <!--enumeration.frequency_including_none.annually.DBI-->
+		<enumItem id="everysecondyear"    aris_typenum="AVT_EVERY_2ND_YEAR"/>                     <!--enumeration.frequency_including_none.everysecondyear.DBI-->
+		<enumItem id="none"               aris_typenum="AVT_AAM_TEST_FREQUENCY_EVENT_DRIVEN"/>    <!--enumeration.frequency_including_none.none.DBI-->
+	</mappingEnum>
+	<!-- QUESTION -->
+	<mappingEnum arcm_enum="question_type" is_multiple="false">
+		<enumItem id="all"                      aris_typenum=""/>                       <!--enumeration.question_type.all.DBI-->
+		<enumItem id="please_select"            aris_typenum=""/>                       <!--enumeration.question_type.please_select.DBI-->
+		<enumItem id="single_choice_combobox"   aris_typenum="AVT_SINGLE_CHOICE"/>      <!--enumeration.question_type.single_choice_combobox.DBI-->
+		<enumItem id="single_choice_radio"      aris_typenum=""/>                       <!--enumeration.question_type.single_choice_radio.DBI-->
+		<enumItem id="multiple_choice"          aris_typenum="AVT_MULTIPLE_CHOICE"/>    <!--enumeration.question_type.multiple_choice.DBI-->
+		<enumItem id="text"                     aris_typenum="AVT_FREE_TEXT"/>          <!--enumeration.question_type.text.DBI-->
+		<enumItem id="long"                     aris_typenum="AVT_NUMERICAL_INTEGER"/>  <!--enumeration.question_type.long.DBI-->
+		<enumItem id="double"                   aris_typenum="AVT_NUMERICAL_DECIMAL"/>  <!--enumeration.question_type.double.DBI-->
+		<enumItem id="date"                     aris_typenum="AVT_SINGLE_DATE"/>        <!--enumeration.question_type.date.DBI-->
+		<enumItem id="daterange"                aris_typenum="AVT_DATE_RANGE"/>         <!--enumeration.question_type.daterange.DBI-->
+	</mappingEnum>
+	<!-- SURVEY TASK -->
+	<!-- both survey task as well as testdefinition use enum 'controlperiod' in ARCM but ARIS attributes are different -->
+	<!-- for this reason there is an additional 'aris_enum' attribute used -->
+	<mappingEnum aris_enum="survey_task_controlperiod" arcm_enum="controlperiod" is_multiple="false"> <!-- based on AT_SURVEYTASK_CTRL_PERIOD -->
+		<enumItem id="day"          aris_typenum="AVT_DAY"/>        <!--enumeration.controlperiod.day.DBI-->
+		<enumItem id="week"         aris_typenum="AVT_WEEK"/>       <!--enumeration.controlperiod.week.DBI-->
+		<enumItem id="month"        aris_typenum="AVT_MONTH"/>      <!--enumeration.controlperiod.month.DBI-->
+		<enumItem id="quarter"      aris_typenum="AVT_QUARTER"/>    <!--enumeration.controlperiod.quarter.DBI-->
+		<enumItem id="semiannual"   aris_typenum="AVT_SEMIANNUAL"/> <!--enumeration.controlperiod.semiannual.DBI-->
+		<enumItem id="year"         aris_typenum="AVT_YEAR"/>       <!--enumeration.controlperiod.year.DBI-->	
+		<enumItem id="twoyears"     aris_typenum="AVT_TWO_YEARS"/>  <!--enumeration.controlperiod.year.DBI-->  
+	</mappingEnum>
+	<!-- ARIS attributes for frequencies are different, ARCM frequency is unified as "frequency" -->
+	<!-- for this reason there is an additional 'aris_enum' attribute used -->
+	<mappingEnum aris_enum="survey_task_frequency" arcm_enum="frequency_including_none" is_multiple="false">
+		<enumItem id="oneoff"             aris_typenum="AVT_ONE_OFF"/>        <!--enumeration.frequency.oneoff.DBI-->
+		<enumItem id="daily"              aris_typenum="AVT_DAILY"/>          <!--enumeration.frequency.daily.DBI-->
+		<enumItem id="weekly"             aris_typenum="AVT_WEEKLY"/>         <!--enumeration.frequency.weekly.DBI-->
+		<enumItem id="monthly"            aris_typenum="AVT_MONTHLY"/>        <!--enumeration.frequency.monthly.DBI-->
+		<enumItem id="quarterly"          aris_typenum="AVT_QUARTERLY"/>      <!--enumeration.frequency.quarterly.DBI-->
+		<enumItem id="semiannually"       aris_typenum="AVT_SEMIANNUALLY"/>   <!--enumeration.frequency.semiannually.DBI-->
+		<enumItem id="annually"           aris_typenum="AVT_ANNUALLY"/>       <!--enumeration.frequency.annually.DBI-->
+		<enumItem id="everysecondyear"    aris_typenum="AVT_EVERY_2ND_YEAR"/> <!--enumeration.eventDrivenFrequency.everysecondyear.DBI-->
+		<enumItem id="none"               aris_typenum="AVT_EVENT_DRIVEN"/>    <!--enumeration.frequency_including_none.none.DBI-->
+	</mappingEnum>
+	<!-- POLICY DEFINITION -->
+	<mappingEnum arcm_enum="policy_type" is_multiple="false">
+		<enumItem id="all"                      aris_typenum=""/>                           <!--enumeration.policy_type.all.DBI-->
+		<enumItem id="unspecified"              aris_typenum=""/>                           <!--enumeration.policy_type.unspecified.DBI-->
+		<enumItem id="publish_only"             aris_typenum="AVT_PUBLISH_ONLY"/>           <!--enumeration.policy_type.publish_only.DBI-->
+		<enumItem id="confirmation_required"    aris_typenum="AVT_CONFIRMATION_REQUIRED"/>  <!--enumeration.policy_type.confirmation_required.DBI-->
+	</mappingEnum>
+	<!-- POLICY REVIEW TASK -->
+	<!-- ARIS attributes for frequencies are different, ARCM frequency is unified as "frequency_including_none" -->
+	<!-- for this reason there is an additional 'aris_enum' attribute used -->
+	<mappingEnum aris_enum="reviewtask_frequency" arcm_enum="frequency_including_none" is_multiple="false">
+		<enumItem id="all"                aris_typenum=""/>                                           <!--enumeration.frequency_including_none.all.DBI-->
+		<enumItem id="unspecified"        aris_typenum=""/>                                           <!--enumeration.frequency_including_none.unspecified.DBI-->
+		<enumItem id="oneoff"             aris_typenum="AVT_RM_ASSESSMENT_FREQUENCY_ONE_OFF"/>        <!--enumeration.frequency_including_none.oneoff.DBI-->
+		<enumItem id="daily"              aris_typenum="AVT_RM_ASSESSMENT_FREQUENCY_DAILY"/>          <!--enumeration.frequency_including_none.daily.DBI-->
+		<enumItem id="weekly"             aris_typenum="AVT_RM_ASSESSMENT_FREQUENCY_WEEKLY"/>         <!--enumeration.frequency_including_none.weekly.DBI-->
+		<enumItem id="monthly"            aris_typenum="AVT_RM_ASSESSMENT_FREQUENCY_MONTHLY"/>        <!--enumeration.frequency_including_none.monthly.DBI-->
+		<enumItem id="quarterly"          aris_typenum="AVT_RM_ASSESSMENT_FREQUENCY_QUARTERLY"/>      <!--enumeration.frequency_including_none.quarterly.DBI-->
+		<enumItem id="semiannually"       aris_typenum="AVT_RM_ASSESSMENT_FREQUENCY_SEMIANNUALLY"/>   <!--enumeration.frequency_including_none.semiannually.DBI-->
+		<enumItem id="annually"           aris_typenum="AVT_RM_ASSESSMENT_FREQUENCY_ANNUALLY"/>       <!--enumeration.frequency_including_none.annually.DBI-->
+		<enumItem id="everysecondyear"    aris_typenum="AVT_EVERY_2ND_YEAR"/>                         <!--enumeration.frequency_including_none.everysecondyear.DBI-->
+		<enumItem id="none"               aris_typenum="AVT_RM_ASSESSMENT_FREQUENCY_EVENT_DRIVEN"/>   <!--enumeration.frequency_including_none.none.DBI-->
+	</mappingEnum>
+	<mappingEnum aris_enum="reviewtask_controlperiod" arcm_enum="controlperiod" is_multiple="false"> <!-- inherited from RECURRING -->
+		<enumItem id="day"          aris_typenum="AVT_AAM_TESTDEF_CRTL_PERIOD_DAY"/>        <!--enumeration.controlperiod.day.DBI-->
+		<enumItem id="week"         aris_typenum="AVT_AAM_TESTDEF_CRTL_PERIOD_WEEK"/>       <!--enumeration.controlperiod.week.DBI-->
+		<enumItem id="month"        aris_typenum="AVT_AAM_TESTDEF_CRTL_PERIOD_MONTH"/>      <!--enumeration.controlperiod.month.DBI-->
+		<enumItem id="quarter"      aris_typenum="AVT_AAM_TESTDEF_CRTL_PERIOD_QUARTER"/>    <!--enumeration.controlperiod.quarter.DBI-->
+		<enumItem id="semiannual"   aris_typenum="AVT_AAM_TESTDEF_CRTL_PERIOD_SEMIANNUAL"/> <!--enumeration.controlperiod.semiannual.DBI-->
+		<enumItem id="year"         aris_typenum="AVT_AAM_TESTDEF_CRTL_PERIOD_YEAR"/>       <!--enumeration.controlperiod.year.DBI-->
+	</mappingEnum>
+	<!-- CHANGE MANAGEMENT -->
+	<!-- ARIS attributes for frequencies are different, ARCM frequency is unified as "frequency" -->
+	<!-- for this reason there is an additional 'aris_enum' attribute used -->
+	<mappingEnum aris_enum="changemanagement_frequency" arcm_enum="frequency" is_multiple="false">
+		<enumItem id="all"                aris_typenum=""/>                   <!--enumeration.frequency.all.DBI-->
+		<enumItem id="oneoff"             aris_typenum="AVT_ONE_OFF"/>        <!--enumeration.frequency.oneoff.DBI-->
+		<enumItem id="daily"              aris_typenum="AVT_DAILY"/>          <!--enumeration.frequency.daily.DBI-->
+		<enumItem id="weekly"             aris_typenum="AVT_WEEKLY"/>         <!--enumeration.frequency.weekly.DBI-->
+		<enumItem id="monthly"            aris_typenum="AVT_MONTHLY"/>        <!--enumeration.frequency.monthly.DBI-->
+		<enumItem id="quarterly"          aris_typenum="AVT_QUARTERLY"/>      <!--enumeration.frequency.quarterly.DBI-->
+		<enumItem id="semiannually"       aris_typenum="AVT_SEMIANNUALLY"/>   <!--enumeration.frequency.semiannually.DBI-->
+		<enumItem id="annually"           aris_typenum="AVT_ANNUALLY"/>       <!--enumeration.frequency.annually.DBI-->
+		<enumItem id="everysecondyear"    aris_typenum="AVT_EVERY_2ND_YEAR"/> <!--enumeration.frequency.everysecondyear.DBI-->
+	</mappingEnum>
+	<mappingEnum aris_enum="regulatorymanagement_frequency" arcm_enum="frequency" is_multiple="false">
+		<enumItem id="all"                aris_typenum=""/>                   <!--enumeration.frequency.all.DBI-->
+		<enumItem id="oneoff"             aris_typenum="AVT_RM_ASSESSMENT_FREQUENCY_ONE_OFF"/>        <!--enumeration.frequency.oneoff.DBI-->
+		<enumItem id="daily"              aris_typenum="AVT_RM_ASSESSMENT_FREQUENCY_DAILY"/>          <!--enumeration.frequency.daily.DBI-->
+		<enumItem id="weekly"             aris_typenum="AVT_RM_ASSESSMENT_FREQUENCY_WEEKLY"/>         <!--enumeration.frequency.weekly.DBI-->
+		<enumItem id="monthly"            aris_typenum="AVT_RM_ASSESSMENT_FREQUENCY_MONTHLY"/>        <!--enumeration.frequency.monthly.DBI-->
+		<enumItem id="quarterly"          aris_typenum="AVT_RM_ASSESSMENT_FREQUENCY_QUARTERLY"/>      <!--enumeration.frequency.quarterly.DBI-->
+		<enumItem id="semiannually"       aris_typenum="AVT_RM_ASSESSMENT_FREQUENCY_SEMIANNUALLY"/>   <!--enumeration.frequency.semiannually.DBI-->
+		<enumItem id="annually"           aris_typenum="AVT_RM_ASSESSMENT_FREQUENCY_ANNUALLY"/>       <!--enumeration.frequency.annually.DBI-->
+		<enumItem id="everysecondyear"    aris_typenum="AVT_EVERY_2ND_YEAR"/> <!--enumeration.frequency.everysecondyear.DBI-->
+	</mappingEnum>
+    <!-- AUDITTEMPLATE -->
+	<mappingEnum arcm_enum="audit_status" is_multiple="false">
+		<enumItem id="in_preparation"    aris_typenum=""/>    <!--enumeration.audittemplatestatus.in_preparation.DBI-->
+		<enumItem id="released"          aris_typenum=""/>    <!--enumeration.audittemplatestatus.released.DBI-->
+	</mappingEnum>
+	<!-- AUDITSTEPTEMPLATE -->
+	<mappingEnum arcm_enum="auditstep_type" is_multiple="false">
+		<enumItem id="point_of_audit_task"    aris_typenum="AVT_POINT_OF_AUDIT_TASK"/>    <!--enumeration.auditsteptype.point_of_audit_task.DBI-->
+		<enumItem id="logistic_task"          aris_typenum="AVT_LOGISTIC_TASK"/>          <!--enumeration.auditsteptype.logistic_task.DBI-->
+	</mappingEnum>
+
+	<!-- ~~~~~~~~~~~~~~ -->
+	<!-- Object mapping -->
+	<!--USER-->
+	<mappingObject id="USER" arcm_objtype="USER" aris_typenum="OT_PERS">
+		<mappingAttr id="userid" 		type="String" 	aris_typenum="AT_LOGIN"/>
+        <mappingAttr id="first_name" 	type="String" 	aris_typenum="AT_FIRST_NAME"/>
+		<mappingAttr id="last_name" 	type="String" 	aris_typenum="AT_LAST_NAME"/>
+        <mappingAttr id="name" 			type="String" 	aris_typenum="FULLNAME"/>
+		<mappingAttr id="description" 	type="Text" 	aris_typenum="AT_DESC"/>
+		<mappingAttr id="email" 		type="String" 	aris_typenum="AT_EMAIL_ADDR"/>
+		<mappingAttr id="phone" 		type="String" 	aris_typenum="AT_PHONE_NUM"/>
+	</mappingObject>
+
+	<!--USERGROUP-->
+	<mappingObject id="USERGROUP" arcm_objtype="USERGROUP" aris_typenum="OT_PERS_TYPE">
+		<mappingCondition mapping_attribute_ref="role" mode="ISNOTNULL"/>
+		
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+        
+		<mappingAttr id="name"          type="String" 				aris_typenum="AT_NAME"/>
+		<mappingAttr id="description" 	type="Text" 				aris_typenum="AT_DESC"/>
+        <mappingAttr id="role"          type="Enum_userrole_type" 	aris_typenum="AT_ARCM_ROLE"/>
+		<mappingAttr id="rolelevel" 	type="Enum_userrole_level" 	aris_typenum="AT_ARCM_ROLE_LEVEL"/>
+        
+		<mappingLink id="groupmembers" aris_typenum="CT_EXEC_5" direction="in" mapping_object_ref="USER"/>
+	</mappingObject>
+
+	<!--DOCUMENT--> 
+	<mappingObject id="DOCUMENT_SIMPLE_1" arcm_objtype="DOCUMENT" 
+					aris_typenum="VIRTUAL" mapping_by_referenced_attributes_value_equality="name,link" ignore_if_referenced_attributes_not_filled="link,name,title">
+		<mappingAttr id="type"      type="String" aris_typenum="CONSTANT#LT_1"/>
+		<mappingAttr id="link"      type="String"   aris_typenum="AT_EXT_1"/>
+		<mappingAttr id="name"      type="String"   aris_typenum="AT_TITL1"/>
+		<mappingAttr id="title"     type="String"   aris_typenum="AT_TITL1"/>
+	</mappingObject>
+	<mappingObject id="DOCUMENT_SIMPLE_2" arcm_objtype="DOCUMENT" 
+				   aris_typenum="VIRTUAL" mapping_by_referenced_attributes_value_equality="name,link" ignore_if_referenced_attributes_not_filled="link,name,title">
+		<mappingAttr id="type"      type="String" aris_typenum="CONSTANT#LT_1"/>
+		<mappingAttr id="link"      type="String"   aris_typenum="AT_EXT_2"/>
+		<mappingAttr id="name"      type="String"   aris_typenum="AT_TITL2"/>
+		<mappingAttr id="title"     type="String"   aris_typenum="AT_TITL2"/>
+	</mappingObject>
+	<mappingObject id="DOCUMENT_SIMPLE_3" arcm_objtype="DOCUMENT"
+				   aris_typenum="VIRTUAL" mapping_by_referenced_attributes_value_equality="name,link" ignore_if_referenced_attributes_not_filled="link,name,title">
+		<mappingAttr id="type"      type="String" aris_typenum="CONSTANT#LT_1"/>
+		<mappingAttr id="link"      type="String"   aris_typenum="AT_EXT_3"/>
+		<mappingAttr id="name"      type="String"   aris_typenum="AT_TITL3"/>
+		<mappingAttr id="title"     type="String"   aris_typenum="AT_TITL3"/>
+	</mappingObject>
+	<mappingObject id="DOCUMENT_SIMPLE_4" arcm_objtype="DOCUMENT"
+				   aris_typenum="VIRTUAL" mapping_by_referenced_attributes_value_equality="name,link" ignore_if_referenced_attributes_not_filled="link,name,title">
+		<mappingAttr id="type"      type="String" aris_typenum="CONSTANT#LT_1"/>
+		<mappingAttr id="link"      type="String"   aris_typenum="AT_LINK"/>
+		<mappingAttr id="name"      type="String"   aris_typenum="AT_TITL4"/>
+		<mappingAttr id="title"     type="String"   aris_typenum="AT_TITL4"/>
+	</mappingObject>
+	<mappingObject id="DOCUMENT_ADS_1" arcm_objtype="DOCUMENT"
+				   aris_typenum="VIRTUAL" mapping_by_referenced_attributes_value_equality="name,link" ignore_if_referenced_attributes_not_filled="link,name,title">
+		<mappingAttr id="type"      type="String" aris_typenum="CONSTANT#ADS_PORTAL"/>
+		<mappingAttr id="link" 		type="String" aris_typenum="AT_ADS_LINK_1"/>
+		<mappingAttr id="filesize"  type="Number" aris_typenum="FILESIZE#AT_ADS_LINK_1"/>
+		<mappingAttr id="name" type="String" aris_typenum="AT_ADS_TITL1"/>
+		<mappingAttr id="title" type="String" aris_typenum="AT_ADS_TITL1"/>
+	</mappingObject>
+	<mappingObject id="DOCUMENT_ADS_2" arcm_objtype="DOCUMENT"
+				   aris_typenum="VIRTUAL" mapping_by_referenced_attributes_value_equality="name,link" ignore_if_referenced_attributes_not_filled="link,name,title">
+		<mappingAttr id="type"      type="String" aris_typenum="CONSTANT#ADS_PORTAL"/>
+		<mappingAttr id="link" 		type="String" aris_typenum="AT_ADS_LINK_2"/>
+		<mappingAttr id="filesize"  type="Number" aris_typenum="FILESIZE#AT_ADS_LINK_2"/>
+		<mappingAttr id="name" 		type="String" aris_typenum="AT_ADS_TITL2"/>
+		<mappingAttr id="title" 	type="String" aris_typenum="AT_ADS_TITL2"/>
+	</mappingObject>
+	<mappingObject id="DOCUMENT_ADS_3" arcm_objtype="DOCUMENT"
+				   aris_typenum="VIRTUAL" mapping_by_referenced_attributes_value_equality="name,link" ignore_if_referenced_attributes_not_filled="link,name,title">
+		<mappingAttr id="type"      type="String" aris_typenum="CONSTANT#ADS_PORTAL"/>
+		<mappingAttr id="link" 		type="String" aris_typenum="AT_ADS_LINK_3"/>
+		<mappingAttr id="filesize"  type="Number" aris_typenum="FILESIZE#AT_ADS_LINK_3"/>
+		<mappingAttr id="name" 		type="String" aris_typenum="AT_ADS_TITL3"/>
+		<mappingAttr id="title" 	type="String" aris_typenum="AT_ADS_TITL3"/>
+	</mappingObject>
+	<mappingObject id="DOCUMENT_ADS_4" arcm_objtype="DOCUMENT"
+				   aris_typenum="VIRTUAL" mapping_by_referenced_attributes_value_equality="name,link" ignore_if_referenced_attributes_not_filled="link,name,title">
+		<mappingAttr id="type"      type="String" aris_typenum="CONSTANT#ADS_PORTAL"/>
+		<mappingAttr id="link" 		type="String" aris_typenum="AT_ADS_LINK_4"/>
+		<mappingAttr id="filesize"  type="Number" aris_typenum="FILESIZE#AT_ADS_LINK_4"/>
+		<mappingAttr id="name" 		type="String" aris_typenum="AT_ADS_TITL4"/>
+		<mappingAttr id="title" 	type="String" aris_typenum="AT_ADS_TITL4"/>
+	</mappingObject>
+	
+	<!--HIERARCHY-->
+    <!-- Tester hierarchy -->
+	<mappingObject id="HIERARCHY_TESTER" arcm_objtype="HIERARCHY" aris_typenum="OT_ORG_UNIT">
+        <!-- An orgunit is only mapped as tester hierarchy if either a tester group or at least one child tester hierarchy is assigned -->
+        <mappingCondition operator="OR">
+            <condition mapping_link_ref="tester" mode="COUNT" min_value="1"/>
+            <condition mapping_link_ref="children" mode="COUNT" min_value="1"/>
+        </mappingCondition>
+        
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+    
+		<mappingAttr id="name" 					    type="String" 				aris_typenum="AT_NAME"/>
+		<mappingAttr id="type" 					    type="Enum_hierarchy_type"  aris_typenum="CONSTANT#tester"/>
+		<mappingAttr id="description" 				type="Text" 				aris_typenum="AT_DESC"/>
+		<mappingAttr id="signoff" 					type="Boolean" 				aris_typenum="AT_AAM_SIGN_OFF_RELEVANT"/>
+		<mappingAttr id="objectguid" 				type="String" 				aris_typenum="OBJECTGUID"/>
+		<mappingAttr id="objectlink" 				type="String" 				aris_typenum="AT_AAM_OBJ_LINK"/>
+		<mappingAttr id="model_name" 				type="String" 				aris_typenum="MODELNAME"/>
+		<mappingAttr id="modelguid" 				type="String" 				aris_typenum="MODELGUID"/>
+		<mappingAttr id="modellink" 				type="String" 				aris_typenum="AT_AAM_MOD_LINK"/>
+
+		<mappingLink id="children" 		    aris_typenum="CT_IS_SUPERIOR_1" direction="out" mapping_object_ref="HIERARCHY_TESTER" 
+					 is_hierarchical="true" is_top_down_reverse="true" restrict_assignment_connections="true"/>
+		<mappingLink id="tester" 			aris_typenum="CT_WRK_IN" 		direction="in" 	mapping_object_ref="USERGROUP" grouprole="tester"
+					 inherit_export_relevance="true" is_top_down_reverse="true"/>
+		<mappingLink id="so_owner" 		    aris_typenum="CT_WRK_IN" 		direction="in" 	mapping_object_ref="USERGROUP" grouprole="signoffowner"/>
+		<mappingLink id="testauditor" 		aris_typenum="CT_WRK_IN" 		direction="in" 	mapping_object_ref="USERGROUP" grouprole="testauditor"/>
+		<mappingLink id="controlauditor" 	aris_typenum="CT_WRK_IN" 		direction="in" 	mapping_object_ref="USERGROUP" grouprole="controlauditor"/>
+	</mappingObject>
+    
+	<!-- Organisational unit hierarchy -->
+	<mappingObject id="HIERARCHY_ORGUNIT" arcm_objtype="HIERARCHY" aris_typenum="OT_ORG_UNIT">
+        <!-- An orgunit is only mapped as orgunit hierarchy if no tester group and no child tester hierarchy is assigned -->
+        <mappingCondition operator="AND">
+            <condition mapping_link_ref="tester" mode="COUNT" max_value="0"/>
+            <condition mapping_link_ref="tester_children" mode="COUNT" max_value="0"/>
+        </mappingCondition>
+        
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+        
+		<mappingAttr id="name"                      type="String" 				aris_typenum="AT_NAME"/>
+		<mappingAttr id="type"                      type="Enum_hierarchy_type"  aris_typenum="CONSTANT#orgunit"/>
+		<mappingAttr id="description" 				type="Text" 				aris_typenum="AT_DESC"/>
+		<mappingAttr id="signoff" 					type="Boolean" 				aris_typenum="AT_AAM_SIGN_OFF_RELEVANT"/>
+		<mappingAttr id="objectguid" 				type="String" 				aris_typenum="OBJECTGUID"/>
+		<mappingAttr id="objectlink" 				type="String" 				aris_typenum="AT_AAM_OBJ_LINK"/>
+		<mappingAttr id="model_name" 				type="String" 				aris_typenum="MODELNAME"/>
+		<mappingAttr id="modelguid" 				type="String" 				aris_typenum="MODELGUID"/>
+		<mappingAttr id="modellink" 				type="String" 				aris_typenum="AT_AAM_MOD_LINK"/>
+	 
+		<mappingLink id="children" 		   aris_typenum="CT_IS_SUPERIOR_1" direction="out" mapping_object_ref="HIERARCHY_ORGUNIT" 
+					 is_hierarchical="true" is_top_down_reverse="true"  restrict_assignment_connections="true"/>
+		<mappingLink id="so_owner" 		   aris_typenum="CT_WRK_IN" 		direction="in" 	mapping_object_ref="USERGROUP" grouprole="signoffowner"/>
+		<mappingLink id="testauditor" 		aris_typenum="CT_WRK_IN" 		direction="in" 	mapping_object_ref="USERGROUP" grouprole="testauditor"/>
+		<mappingLink id="controlauditor" 	aris_typenum="CT_WRK_IN" 		direction="in" 	mapping_object_ref="USERGROUP" grouprole="controlauditor"/>
+        
+        <!-- no mappingLinks to export, only needed for the mappingCondition to distinguish the orgunit hierarchy mapping from the tester hierarchy mapping -->
+        <mappingLink id="tester" 			aris_typenum="CT_WRK_IN" 		direction="in" 	mapping_object_ref="USERGROUP" grouprole="tester" 
+                     condition_relevant_only="true"/>
+        <mappingLink id="tester_children" 		    aris_typenum="CT_IS_SUPERIOR_1" direction="out" mapping_object_ref="HIERARCHY_TESTER" 
+					 is_hierarchical="true" is_top_down_reverse="true" restrict_assignment_connections="true"
+                     condition_relevant_only="true"/>
+	</mappingObject>
+    
+    <!-- Regulation hierarchy -->
+	<mappingObject id="HIERARCHY_REGULATION_TECH_TERM" arcm_objtype="HIERARCHY" aris_typenum="OT_TECH_TRM">
+		<mappingCondition type="Boolean" aris_typenum="AT_AAM_ANNUAL_ACCOUNTS_ITEM" mode="EQ" value="true"/>
+		
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+        
+		<mappingAttr id="name"                  type="String" 							aris_typenum="AT_NAME"/>
+		<mappingAttr id="type"                  type="Enum_hierarchy_type" 				aris_typenum="CONSTANT#financialaccount"/>
+		<mappingAttr id="description" 			type="Text" 							aris_typenum="AT_DESC"/>
+		<mappingAttr id="hnumber" 				type="String" 							aris_typenum="AT_SHORT_DESC"/>
+		<mappingAttr id="signoff" 				type="Boolean" 							aris_typenum="AT_AAM_SIGN_OFF_RELEVANT"/>
+		<mappingAttr id="reviewRelevant" 		type="Boolean" 							aris_typenum="AT_REVIEW_RELEVANT"/>
+		<mappingAttr id="activities" 			type="Text" 							aris_typenum="AT_REVIEW_ACTIVITY"/>
+		<mappingAttr id="frequency" 			type="Enum_changemanagement_frequency" 	aris_typenum="AT_REVIEW_FREQUENCY_1"/>
+		<mappingAttr id="event_driven_allowed"  type="Boolean" 							aris_typenum="AT_EVENT_DRIVEN_REVIEW_ALLOWED"/>
+		<mappingAttr id="duration"              type="Number" 							aris_typenum="AT_REVIEW_EXECUTION_TIME_LIMIT"/>
+		<mappingAttr id="startdate" 			type="Date" 							aris_typenum="AT_REVIEW_START_DATE"/>
+		<mappingAttr id="enddate" 				type="Date" 					        aris_typenum="AT_REVIEW_END_DATE"/>
+		<mappingAttr id="objectguid" 			type="String" 					        aris_typenum="OBJECTGUID"/>
+		<mappingAttr id="objectlink" 			type="String" 					        aris_typenum="AT_AAM_OBJ_LINK"/>
+		<mappingAttr id="model_name" 			type="String" 					        aris_typenum="MODELNAME"/>
+		<mappingAttr id="modelguid" 			type="String" 					        aris_typenum="MODELGUID"/>
+		<mappingAttr id="modellink" 			type="String" 					        aris_typenum="AT_AAM_MOD_LINK"/>
+		
+		<mappingLink id="children" 		   aris_typenum="CT_HAS_1" 	direction="out" mapping_object_ref="HIERARCHY_REGULATION_TECH_TERM" 
+					 is_hierarchical="true" is_top_down_reverse="true"  restrict_assignment_connections="true"/>
+		<mappingLink id="so_owner" 		   aris_typenum="CT_IS_OWN" 	direction="in" 	mapping_object_ref="USERGROUP" grouprole="signoffowner"/>
+		<mappingLink id="testauditor" 		aris_typenum="CT_IS_OWN" 	direction="in" 	mapping_object_ref="USERGROUP" grouprole="testauditor"/>
+		<mappingLink id="controlauditor" 	aris_typenum="CT_IS_OWN" 	direction="in" 	mapping_object_ref="USERGROUP" grouprole="controlauditor"/>
+		<mappingLink id="owner_group" 		aris_typenum="CT_IS_OWN" 	direction="in" 	mapping_object_ref="USERGROUP" grouprole="hierarchyowner"/>
+	</mappingObject>
+    
+    <!-- Regulation clause -->
+    <mappingObject id="HIERARCHY_REGULATION_CLAUSE" arcm_objtype="HIERARCHY" aris_typenum="OT_REGULATION_CLAUSE">
+    
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+        
+        <mappingAttr id="name"                  type="String" 							aris_typenum="AT_NAME"/>
+		<mappingAttr id="type"                  type="Enum_hierarchy_type" 				aris_typenum="CONSTANT#financialaccount"/>
+        <mappingAttr id="description" 			type="Text" 							aris_typenum="AT_DESC"/>
+        
+        <mappingAttr id="signoff" 				type="Boolean" 							aris_typenum="AT_AAM_SIGN_OFF_RELEVANT"/>
+		<mappingAttr id="reviewRelevant" 		type="Boolean" 							aris_typenum="CONSTANT#false"/>
+        
+        <mappingAttr id="objectguid" 			type="String" 					        aris_typenum="OBJECTGUID"/>
+		<mappingAttr id="objectlink" 			type="String" 					        aris_typenum="AT_AAM_OBJ_LINK"/>
+		<mappingAttr id="model_name" 			type="String" 					        aris_typenum="MODELNAME"/>
+		<mappingAttr id="modelguid" 			type="String" 					        aris_typenum="MODELGUID"/>
+		<mappingAttr id="modellink" 			type="String" 					        aris_typenum="AT_AAM_MOD_LINK"/>
+        
+        <mappingLink id="so_owner" 		   	aris_typenum="CT_IS_OWN" 	direction="in" 	mapping_object_ref="USERGROUP" grouprole="signoffowner"/>
+		<mappingLink id="testauditor" 	   	aris_typenum="CT_IS_OWN" 	direction="in" 	mapping_object_ref="USERGROUP" grouprole="testauditor"/>
+		<mappingLink id="controlauditor" 	aris_typenum="CT_IS_OWN" 	direction="in" 	mapping_object_ref="USERGROUP" grouprole="controlauditor"/>
+    </mappingObject>
+    
+	<!-- Regulation chapter -->
+    <mappingObject id="HIERARCHY_REGULATION_CHAPTER" arcm_objtype="HIERARCHY" aris_typenum="OT_REGULATION_CHAPTER">
+        
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+        
+        <mappingAttr id="name"                  type="String" 							aris_typenum="AT_NAME"/>
+		<mappingAttr id="type"                  type="Enum_hierarchy_type" 				aris_typenum="CONSTANT#financialaccount"/>
+        <mappingAttr id="description" 			type="Text" 							aris_typenum="AT_DESC"/>
+        
+        <mappingAttr id="signoff" 				type="Boolean" 							aris_typenum="AT_AAM_SIGN_OFF_RELEVANT"/>
+		<mappingAttr id="reviewRelevant" 		type="Boolean" 							aris_typenum="CONSTANT#false"/>
+        
+        <mappingAttr id="objectguid" 			type="String" 					        aris_typenum="OBJECTGUID"/>
+		<mappingAttr id="objectlink" 			type="String" 					        aris_typenum="AT_AAM_OBJ_LINK"/>
+		<mappingAttr id="model_name" 			type="String" 					        aris_typenum="MODELNAME"/>
+		<mappingAttr id="modelguid" 			type="String" 					        aris_typenum="MODELGUID"/>
+		<mappingAttr id="modellink" 			type="String" 					        aris_typenum="AT_AAM_MOD_LINK"/>      
+        
+        <mappingLink id="so_owner" 		   		aris_typenum="CT_IS_OWN" 	direction="in" 	mapping_object_ref="USERGROUP" grouprole="signoffowner"/>
+		<mappingLink id="testauditor" 			aris_typenum="CT_IS_OWN" 	direction="in" 	mapping_object_ref="USERGROUP" grouprole="testauditor"/>
+		<mappingLink id="controlauditor" 		aris_typenum="CT_IS_OWN" 	direction="in" 	mapping_object_ref="USERGROUP" grouprole="controlauditor"/>
+        
+        <mappingLink id="children" 		   aris_typenum="CT_CONTAINS_2" 	direction="out" 	mapping_object_ref="HIERARCHY_REGULATION_CLAUSE"
+                                            is_top_down_reverse="true"/>
+        
+        <mappingLink id="children" 		   aris_typenum="CT_CONTAINS_2"    direction="out" mapping_object_ref="HIERARCHY_REGULATION_CHAPTER" 
+					 is_hierarchical="true" is_top_down_reverse="true"  restrict_assignment_connections="true"/>
+    </mappingObject>
+    
+	<!-- Regulation -->
+    <mappingObject id="HIERARCHY_REGULATION_REGULATION" arcm_objtype="HIERARCHY" aris_typenum="OT_REGULATION">
+    
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+        
+        <mappingAttr id="name"                  type="String" 							aris_typenum="AT_NAME"/>
+		<mappingAttr id="type"                  type="Enum_hierarchy_type" 				aris_typenum="CONSTANT#financialaccount"/>
+        <mappingAttr id="description" 			type="Text" 							aris_typenum="AT_DESC"/>
+        
+        <mappingAttr id="signoff" 				type="Boolean" 							aris_typenum="AT_AAM_SIGN_OFF_RELEVANT"/>
+        
+        <mappingAttr id="reviewRelevant" 		type="Boolean" 							aris_typenum="AT_REVIEW_RELEVANT"/>
+		<mappingAttr id="activities" 			type="Text" 							aris_typenum="AT_REVIEW_ACTIVITY"/>
+		<mappingAttr id="frequency" 			type="Enum_changemanagement_frequency" 	aris_typenum="AT_REVIEW_FREQUENCY_1"/>
+		<mappingAttr id="event_driven_allowed"  type="Boolean" 							aris_typenum="AT_EVENT_DRIVEN_REVIEW_ALLOWED"/>
+		<mappingAttr id="duration"              type="Number" 							aris_typenum="AT_REVIEW_EXECUTION_TIME_LIMIT"/>
+		<mappingAttr id="startdate" 			type="Date" 							aris_typenum="AT_REVIEW_START_DATE"/>
+		<mappingAttr id="enddate" 				type="Date" 					        aris_typenum="AT_REVIEW_END_DATE"/>
+		
+		<mappingAttr id="validFrom" 			type="Date" 					        aris_typenum="AT_REGULATION_VALID_FROM"/>
+		<mappingAttr id="validUntil" 			type="Date" 					        aris_typenum="AT_REGULATION_VALID_UNTIL"/>
+		<mappingAttr id="regulationIssuer" 		type="Text" 							aris_typenum="AT_REGULATION_ISSUER"/>
+		<mappingAttr id="isOutdated"  			type="Boolean" 							aris_typenum="AT_REGULATION_IS_OUTDATED"/>
+		<mappingAttr id="regulationVersion"     type="String" 							aris_typenum="AT_REGULATION_VERSION"/>
+		
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_1"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_2"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_3"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_4"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_1"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_2"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_3"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_4"/>
+        
+        <mappingAttr id="objectguid" 			type="String" 					        aris_typenum="OBJECTGUID"/>
+		<mappingAttr id="objectlink" 			type="String" 					        aris_typenum="AT_AAM_OBJ_LINK"/>
+		<mappingAttr id="model_name" 			type="String" 					        aris_typenum="MODELNAME"/>
+		<mappingAttr id="modelguid" 			type="String" 					        aris_typenum="MODELGUID"/>
+		<mappingAttr id="modellink" 			type="String" 					        aris_typenum="AT_AAM_MOD_LINK"/>
+
+        <mappingLink id="so_owner" 		   		aris_typenum="CT_IS_OWN" 	direction="in" 	mapping_object_ref="USERGROUP" grouprole="signoffowner"/>
+		<mappingLink id="owner_group" 		    aris_typenum="CT_IS_OWN" 	direction="in" 	mapping_object_ref="USERGROUP" grouprole="hierarchyowner"/>
+		<mappingLink id="testauditor" 			aris_typenum="CT_IS_OWN" 	direction="in" 	mapping_object_ref="USERGROUP" grouprole="testauditor"/>
+		<mappingLink id="controlauditor" 		aris_typenum="CT_IS_OWN" 	direction="in" 	mapping_object_ref="USERGROUP" grouprole="controlauditor"/>
+        
+        <mappingLink id="children" 		   aris_typenum="CT_CONTAINS_2" 	direction="out" 	mapping_object_ref="HIERARCHY_REGULATION_CHAPTER"
+                                            is_top_down_reverse="true"/>
+	</mappingObject>
+    
+	<!-- Regulation category -->
+    <mappingObject id="HIERARCHY_REGULATION_CATEGORY" arcm_objtype="HIERARCHY" aris_typenum="OT_REGULATION_CATEGORY">
+        
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+        
+        <mappingAttr id="name"                  type="String" 							aris_typenum="AT_NAME"/>
+		<mappingAttr id="type"                  type="Enum_hierarchy_type" 				aris_typenum="CONSTANT#financialaccount"/>
+        <mappingAttr id="description" 			type="Text" 							aris_typenum="AT_DESC"/>
+       
+        <mappingAttr id="signoff" 				type="Boolean" 							aris_typenum="AT_AAM_SIGN_OFF_RELEVANT"/>
+		<mappingAttr id="reviewRelevant" 		type="Boolean" 							aris_typenum="CONSTANT#false"/>
+        
+        <mappingAttr id="objectguid" 			type="String" 					        aris_typenum="OBJECTGUID"/>
+		<mappingAttr id="objectlink" 			type="String" 					        aris_typenum="AT_AAM_OBJ_LINK"/>
+		<mappingAttr id="model_name" 			type="String" 					        aris_typenum="MODELNAME"/>
+		<mappingAttr id="modelguid" 			type="String" 					        aris_typenum="MODELGUID"/>
+		<mappingAttr id="modellink" 			type="String" 					        aris_typenum="AT_AAM_MOD_LINK"/>
+        
+        <mappingLink id="so_owner" 		   aris_typenum="CT_IS_OWN" 	direction="in" 	mapping_object_ref="USERGROUP" grouprole="signoffowner"/>
+        
+        <mappingLink id="children" 		   aris_typenum="CT_SUBS_1" 	direction="out" 	mapping_object_ref="HIERARCHY_REGULATION_REGULATION"
+                                            is_top_down_reverse="true"/>
+        <mappingLink id="children" 		   aris_typenum="CT_BELONG_CAT"    direction="out" mapping_object_ref="HIERARCHY_REGULATION_CATEGORY" 
+					 is_hierarchical="true" is_top_down_reverse="true"  restrict_assignment_connections="true"/>
+    </mappingObject>
+
+	<!-- Application system type hierarchy -->
+	<mappingObject id="HIERARCHY_APPSYSTYPE_TYPE" arcm_objtype="HIERARCHY" aris_typenum="OT_APPL_SYS_TYPE">
+    
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+        
+		<mappingAttr id="name" 					    type="String" 					aris_typenum="AT_NAME"/>
+		<mappingAttr id="type"                      type="Enum_hierarchy_type" 		aris_typenum="CONSTANT#applicationsystemtype"/>
+		<mappingAttr id="description" 				type="Text" 					aris_typenum="AT_DESC"/>
+		<mappingAttr id="objectguid" 				type="String" 					aris_typenum="OBJECTGUID"/>
+		<mappingAttr id="objectlink" 				type="String" 					aris_typenum="AT_AAM_OBJ_LINK"/>
+		<mappingAttr id="model_name" 				type="String" 					aris_typenum="MODELNAME"/>
+		<mappingAttr id="modelguid" 				type="String" 					aris_typenum="MODELGUID"/>
+		<mappingAttr id="modellink" 				type="String" 					aris_typenum="AT_AAM_MOD_LINK"/>      
+
+		<mappingLink id="children" aris_typenum="CT_CAN_SUBS_2" direction="out" mapping_object_ref="HIERARCHY_APPSYSTYPE_TYPE" 
+					 is_hierarchical="true" is_top_down_reverse="true" restrict_assignment_connections="true"/>
+    </mappingObject>
+    
+	<!-- Application system type hierarchy -->
+    <mappingObject id="HIERARCHY_APPSYSTYPE_CLASS" arcm_objtype="HIERARCHY" aris_typenum="OT_APPL_SYS_CLS">
+        <!-- deactivated in standard
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+        -->
+		<mappingAttr id="name" 					    type="String" 					aris_typenum="AT_NAME"/>
+		<mappingAttr id="type"                      type="Enum_hierarchy_type" 		aris_typenum="CONSTANT#applicationsystemtype"/>
+		<mappingAttr id="description" 				type="Text" 					aris_typenum="AT_DESC"/>
+		<mappingAttr id="objectguid" 				type="String" 					aris_typenum="OBJECTGUID"/>
+		<mappingAttr id="objectlink" 				type="String" 					aris_typenum="AT_AAM_OBJ_LINK"/>
+		<mappingAttr id="model_name" 				type="String" 					aris_typenum="MODELNAME"/>
+		<mappingAttr id="modelguid" 				type="String" 					aris_typenum="MODELGUID"/>
+		<mappingAttr id="modellink" 				type="String" 					aris_typenum="AT_AAM_MOD_LINK"/>      
+
+		<mappingLink id="children" aris_typenum="CT_CAN_SUBS_2" direction="out" mapping_object_ref="HIERARCHY_APPSYSTYPE_CLASS" 
+					 is_hierarchical="true" is_top_down_reverse="true" restrict_assignment_connections="true"/>
+        <!-- deactivated in standard
+        <mappingLink id="children" aris_typenum="CT_BELONGS_TO_CLS" direction="in" mapping_object_ref="HIERARCHY_APPSYSTYPE_TYPE" 
+					 is_hierarchical="true" is_top_down_reverse="true" restrict_assignment_connections="true"/>
+        -->
+	</mappingObject>
+
+	<!-- Risk category hierarchy -->
+	<mappingObject id="HIERARCHY_RISKCAT" arcm_objtype="HIERARCHY" aris_typenum="OT_RISK_CATEGORY">
+        
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+        
+		<mappingAttr id="name" 		    type="String" 				aris_typenum="AT_NAME"/>
+		<mappingAttr id="type"          type="Enum_hierarchy_type" 	aris_typenum="CONSTANT#category"/>
+		<mappingAttr id="description" 	type="Text" 				aris_typenum="AT_DESC"/>
+		<mappingAttr id="objectguid" 	type="String" 				aris_typenum="OBJECTGUID"/>
+		<mappingAttr id="objectlink" 	type="String" 				aris_typenum="AT_AAM_OBJ_LINK"/>
+		<mappingAttr id="model_name" 	type="String" 				aris_typenum="MODELNAME"/>
+		<mappingAttr id="modelguid" 	type="String" 				aris_typenum="MODELGUID"/>
+		<mappingAttr id="modellink" 	type="String" 				aris_typenum="AT_AAM_MOD_LINK"/>
+
+		<mappingLink id="children" aris_typenum="CT_BELONG_CAT" direction="out" mapping_object_ref="HIERARCHY_RISKCAT" 
+					 is_hierarchical="true" is_top_down_reverse="true" restrict_assignment_connections="true"/>   
+    </mappingObject>
+
+	<!-- Data cluster -->
+	<mappingObject id="HIERARCHY_DATA" arcm_objtype="HIERARCHY" aris_typenum="OT_CLST">
+        
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+        
+		<mappingAttr id="name" 					    type="String" 						aris_typenum="AT_NAME"/>
+		<mappingAttr id="type" 					    type="Enum_hierarchy_type" 			aris_typenum="CONSTANT#datacluster"/>
+		<mappingAttr id="description" 				type="Text" 						aris_typenum="AT_DESC"/>
+		<mappingAttr id="objectguid" 				type="String" 						aris_typenum="OBJECTGUID"/>
+		<mappingAttr id="objectlink" 				type="String" 						aris_typenum="AT_AAM_OBJ_LINK"/>
+		<mappingAttr id="model_name" 				type="String" 						aris_typenum="MODELNAME"/>
+		<mappingAttr id="modelguid" 				type="String" 						aris_typenum="MODELGUID"/>
+		<mappingAttr id="modellink" 				type="String" 						aris_typenum="AT_AAM_MOD_LINK"/>
+		
+		<mappingLink id="children" aris_typenum="CT_CONS_OF_2" direction="out" mapping_object_ref="HIERARCHY_DATA" 
+					 is_hierarchical="true" is_top_down_reverse="true" restrict_assignment_connections="true"/>
+	</mappingObject>
+
+	<!-- Process hierarchy -->
+	<mappingObject id="HIERARCHY_PROCESS" arcm_objtype="HIERARCHY" aris_typenum="OT_FUNC" aris_symbolnum="ST_FUNC,ST_VAL_ADD_CHN_SML_1,ST_VAL_ADD_CHN_SML_2,ST_SOLAR_FUNC,ST_BPMN_CALL_ACTIVITY,ST_BPMN_SUBPROCESS,ST_BPMN_TASK,ST_BPMN_BUSINESS_RULE_TASK,ST_BPMN_MANUAL_TASK_2,ST_BPMN_RECEIVE_TASK,ST_BPMN_SCRIPT_TASK,ST_BPMN_SEND_TASK,ST_BPMN_SERVICE_TASK,ST_BPMN_TRANSACTION,ST_BPMN_USER_TASK,0"> <!-- symbol type "0" means all objects without defined symbol type -->
+		
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+        
+        <mappingAttr id="name"                          type="String"                       aris_typenum="AT_NAME"/>
+        <mappingAttr id="type"                          type="Enum_hierarchy_type"          aris_typenum="CONSTANT#process"/>
+		<mappingAttr id="description" 					type="Text"                         aris_typenum="AT_DESC"/>
+		<mappingAttr id="signoff" 						type="Boolean" 					    aris_typenum="AT_AAM_SIGN_OFF_RELEVANT"/>
+		<mappingAttr id="objectguid" 					type="String" 					    aris_typenum="OBJECTGUID"/>
+		<mappingAttr id="objectlink" 					type="String"					    aris_typenum="AT_AAM_OBJ_LINK"/>
+		<mappingAttr id="model_name" 					type="String" 					    aris_typenum="MODELNAME"/>
+        <mappingAttr id="modelguid" 					type="String" 					    aris_typenum="MODELGUID"/>
+		<mappingAttr id="modellink" 					type="String" 					    aris_typenum="AT_AAM_MOD_LINK"/> 
+
+		<mappingLink id="children"          aris_typenum="CT_IS_PRCS_ORNT_SUPER" 	direction="out|assign_out" mapping_object_ref="HIERARCHY_PROCESS" 
+					 is_hierarchical="true" is_top_down_reverse="true" restrict_assignment_connections="true"/>
+		<mappingLink id="so_owner"          aris_typenum="CT_DECD_ON" 				direction="in" 	mapping_object_ref="USERGROUP" grouprole="signoffowner"/>
+		<mappingLink id="testauditor" 		aris_typenum="CT_DECD_ON" 				direction="in" 	mapping_object_ref="USERGROUP" grouprole="testauditor"/>
+		<mappingLink id="controlauditor" 	aris_typenum="CT_DECD_ON" 				direction="in" 	mapping_object_ref="USERGROUP" grouprole="controlauditor"/>
+    </mappingObject>
+
+	<!--TESTDEFINITION-->
+	<mappingObject id="TESTDEFINITION" arcm_objtype="TESTDEFINITION" aris_typenum="OT_TEST_DEFINITION">
+		
+		<mappingAttr id="name" 					type="String" 						aris_typenum="AT_NAME"/>
+        	<mappingAttr id="description" 	        type="Text" 	                    aris_typenum="AT_DESC"/>
+		<mappingAttr id="testtype" 				type="Enum_testtype" 				aris_typenum="ISMULTIPLE"/>     
+		<mappingAttr id="testingsteps" 			type="Text" 						aris_typenum="AT_AAM_TEST_ACTIVITY"/>
+		<mappingAttr id="testextend"            type="Text" 						aris_typenum="AT_AAM_TEST_SCOPE"/>
+		<mappingAttr id="test_nature"           type="Enum_natureoftest" 			aris_typenum="ISMULTIPLE"/>
+		<mappingAttr id="frequency"             type="Enum_testcase_frequency" 		aris_typenum="AT_AAM_TEST_FREQUENCY"/>
+		<mappingAttr id="event_driven_allowed" 	type="Boolean" 						aris_typenum="EVENT_DRIVEN_ALLOWED#AT_EVENT_DRIVEN_TESTS_ALLOWED#AT_AAM_TEST_FREQUENCY#AVT_AAM_TEST_FREQUENCY_EVENT_DRIVEN"/>
+		<mappingAttr id="duration" 				type="Number" 						aris_typenum="AT_AAM_TEST_DURATION"/>
+		<mappingAttr id="startdate"             type="Date" 						aris_typenum="AT_AAM_TESTDEF_START_DATE"/>
+		<mappingAttr id="enddate"               type="Date" 						aris_typenum="AT_AAM_TESTDEF_END_DATE"/>
+		<mappingAttr id="control_period"        type="Enum_testcase_controlperiod" 	aris_typenum="AT_AAM_TESTDEF_CTRL_PERIOD"/>
+		<mappingAttr id="control_period_offset" type="Number" 						aris_typenum="AT_AAM_TESTDEF_OFFSET"/>
+		<mappingAttr id="isfollowup"            type="Boolean" 						aris_typenum="AT_AAM_TESTDEF_FOLLOWUP"/>
+		
+		<mappingLink id="orgunit" 			aris_typenum="CT_AFFECTS"     direction="out" mapping_object_ref="HIERARCHY_ORGUNIT"/>
+		<mappingLink id="manager_group"		aris_typenum="CT_IS_ASSIG_1"  direction="in"  mapping_object_ref="USERGROUP" grouprole="testmanager"/>
+		<mappingLink id="owner_group" 		aris_typenum="CT_IS_ASSIG_1"  direction="in"  mapping_object_ref="USERGROUP" grouprole="tester"/>
+		<mappingLink id="reviewer_group"	aris_typenum="CT_IS_ASSIG_1"  direction="in"  mapping_object_ref="USERGROUP" grouprole="testreviewer"/>
+        
+        <mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_1"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_2"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_3"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_4"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_1"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_2"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_3"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_4"/>
+    </mappingObject>
+
+	<!--CONTROLEXECUTIONTASK-->
+	<mappingObject id="CONTROLEXECUTIONTASK" arcm_objtype="CONTROLEXECUTIONTASK" aris_typenum="OT_CTRL_EXECUTION_TASK" aris_symbolnum="ST_CTRL_EXECUTION_TASK">
+		<mappingAttr id="name" 					    type="String" 									aris_typenum="AT_NAME"/>
+        <mappingAttr id="description" 	            type="Text" 	                                aris_typenum="AT_DESC"/>
+		<mappingAttr id="activities" 				type="Text" 									aris_typenum="AT_CTRL_EXECUTION_TASK_DOC"/>
+		<mappingAttr id="selectivity" 				type="Text" 									aris_typenum="AT_CTRL_EXECUTION_TASK_SELECTIVITY"/>
+		<mappingAttr id="result_format" 			type="Text" 									aris_typenum="AT_CTRL_EXECUTION_TASK_RESULT_FORMAT"/>
+		<mappingAttr id="frequency" 				type="Enum_controlexecutiontask_frequency" 		aris_typenum="AT_CTRL_EXECUTION_TASK_FREQUENCY"/>
+		<mappingAttr id="event_driven_allowed"      type="Boolean" 									aris_typenum="EVENT_DRIVEN_ALLOWED#AT_EVENT_DRIVEN_CTRL_EXECUTION_ALLOWED#AT_CTRL_EXECUTION_TASK_FREQUENCY#AVT_EVENT_DRIVEN"/>
+		<mappingAttr id="duration"                  type="Number" 									aris_typenum="AT_CTRL_EXECUTION_TASK_DURATION"/>
+		<mappingAttr id="startdate" 				type="Date" 									aris_typenum="AT_CTRL_EXECUTION_TASK_START_DATE"/>
+		<mappingAttr id="enddate" 					type="Date" 									aris_typenum="AT_CTRL_EXECUTION_TASK_END_DATE"/>
+        <mappingAttr id="control_period" 			type="Enum_controlexecutiontask_controlperiod" 	aris_typenum="AT_CTRL_EXECUTION_TASK_CTRL_PERIOD"/>	
+		<mappingAttr id="control_period_offset" 	type="Number" 									aris_typenum="AT_CTRL_EXECUTION_TASK_OFFSET"/>          
+
+		<mappingLink id="affected_orgunit"	aris_typenum="CT_AFFECTS" 		direction="out" mapping_object_ref="HIERARCHY_ORGUNIT"/>
+		<mappingLink id="owner_group" 		aris_typenum="CT_IS_ASSIG_1" 	direction="in" 	mapping_object_ref="USERGROUP" grouprole="controlexecutionowner"/>
+		
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_1"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_2"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_3"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_4"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_1"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_2"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_3"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_4"/>
+    </mappingObject>
+
+	<!--CONTROL-->
+	<mappingObject id="CONTROL" arcm_objtype="CONTROL" aris_typenum="OT_FUNC" aris_symbolnum="ST_CONTR,ST_CONTR_PIC">
+
+		<exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+				   
+		<mappingAttr id="name"                  type="String" 				aris_typenum="AT_NAME"/>
+        <mappingAttr id="description" 	        type="Text" 	            aris_typenum="AT_DESC"/>
+		<mappingAttr id="control_id" 			type="String" 				aris_typenum="AT_AAM_CTRL_ID"/>
+		<mappingAttr id="key_control" 			type="Boolean" 				aris_typenum="AT_AAM_KEY_CTRL"/>
+		<mappingAttr id="controls"              type="Text" 				aris_typenum="AT_AAM_CTRL_ACTIVITY"/>
+		<mappingAttr id="control_effect" 		type="Enum_controleffect" 	aris_typenum="AT_AAM_CTRL_EFFECT"/>
+		<mappingAttr id="control_type"          type="Enum_controltype"     aris_typenum="ISMULTIPLE"/>
+		<mappingAttr id="control_execution" 	type="Enum_controlexecution" aris_typenum="ISMULTIPLE"/>
+		<mappingAttr id="control_frequency" 	type="Enum_controlfrequency" aris_typenum="AT_AAM_CTRL_FREQUENCY"/>
+		<mappingAttr id="control_objective" 	type="Text" 				aris_typenum="AT_AAM_CTRL_OBJECTIVE"/>
+        <mappingAttr id="assertions"            type="Enum_assertion"       aris_typenum="ISMULTIPLE"/>
+
+		<mappingLink id="process"               aris_typenum="CT_IS_PERFORMED_AT"   direction="out" mapping_object_ref="HIERARCHY_PROCESS"/>
+		<mappingLink id="finaccount" 		    aris_typenum="CT_AFFECTS" 			direction="out" mapping_object_ref="HIERARCHY_REGULATION_TECH_TERM"/>
+		<mappingLink id="testdefinitions" 		aris_typenum="CT_IS_MONITORED_BY" 	direction="out" mapping_object_ref="TESTDEFINITION"/>
+		<mappingLink id="controlexecutiontasks"	aris_typenum="CT_IS_INITIATED_BY" 	direction="out" mapping_object_ref="CONTROLEXECUTIONTASK"/>
+		
+		<mappingLink id="manager_group" 		aris_typenum="CT_IS_TECH_RESP_3" 	direction="in" 	mapping_object_ref="USERGROUP" grouprole="controlmanager"/>
+        
+        <mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_1"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_2"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_3"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_4"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_1"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_2"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_3"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_4"/>
+    </mappingObject> 
+	
+	<!--REGULATORYREQUIREMENT-->
+	<mappingObject id="REGULATORYREQUIREMENT" arcm_objtype="REGULATORYREQUIREMENT" aris_typenum="OT_REQUIREMENT">
+        
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+        
+        <mappingAttr id="name"                  type="String" 							aris_typenum="AT_NAME"/>
+        <mappingAttr id="description" 			type="Text" 							aris_typenum="AT_DESC"/>
+		
+		<mappingLink id="regulation" 			aris_typenum="CT_REFS_TO_2" 		  		direction="out" mapping_object_ref="HIERARCHY_REGULATION_CLAUSE"/>
+		<mappingLink id="regulation" 		 	aris_typenum="CT_REFS_TO_2" 		  		direction="out" mapping_object_ref="HIERARCHY_REGULATION_CHAPTER"/> 
+		<mappingLink id="regulation" 			aris_typenum="CT_REFS_TO_2" 		  		direction="out" mapping_object_ref="HIERARCHY_REGULATION_REGULATION"/>
+		
+		<mappingLink id="appsystem" 		aris_typenum="CT_REFS_TO_2"   			direction="out" mapping_object_ref="HIERARCHY_APPSYSTYPE_TYPE"/>
+		<mappingLink id="data" 			    aris_typenum="CT_REFS_TO_2"				direction="out"	mapping_object_ref="HIERARCHY_DATA"/>
+		<mappingLink id="orgunit" 			aris_typenum="CT_REFS_TO_2" 			direction="out" mapping_object_ref="HIERARCHY_ORGUNIT"/>
+		<mappingLink id="process" 			aris_typenum="CT_REFS_TO_2"				direction="out"	mapping_object_ref="HIERARCHY_PROCESS"/>
+		
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_1"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_2"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_3"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_4"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_1"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_2"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_3"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_4"/>
+		
+		<mappingLink id="manager_group" 		   aris_typenum="CT_IS_OWN" 		direction="in" 	mapping_object_ref="USERGROUP" grouprole="regulationmanager"/>
+    </mappingObject>
+		
+	<!--RISK-->
+	<mappingObject id="RISK" arcm_objtype="RISK" aris_typenum="OT_RISK">
+		
+		<exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+		
+		<!-- ~~~~ Test management ~~~~ -->
+		<mappingAttr id="risk_id" 			type="String" aris_typenum="AT_AAM_RISK_ID"/>
+		<mappingAttr id="name"              type="String" aris_typenum="AT_NAME"/>
+        <mappingAttr id="description" 		type="Text" aris_typenum="AT_DESC"/>
+		<mappingAttr id="key_risk" 			type="Boolean" aris_typenum="AT_KEY_RISK"/>
+		<mappingAttr id="impact" 			type="Enum_impact" aris_typenum="AT_AAM_IMPACT"/>
+		<mappingAttr id="probability" 		type="Enum_probability" aris_typenum="AT_AAM_PROBABILITY"/>
+		<mappingAttr id="assertions" 		type="Enum_assertion" aris_typenum="ISMULTIPLE"/>
+		<mappingAttr id="risktype"          type="Enum_risktype" aris_typenum="ISMULTIPLE"/>
+		<mappingAttr id="risk_catalog1" 	type="String" aris_typenum="AT_AAM_RISK_CATALOG_1"/>
+		<mappingAttr id="risk_catalog2" 	type="String" aris_typenum="AT_AAM_RISK_CATALOG_2"/>
+
+		<mappingLink id="controls" 		    aris_typenum="CT_IS_REDU_BY" 		direction="out" mapping_object_ref="CONTROL"
+					 inherit_export_relevance="true"/>
+					 
+		<mappingLink id="finaccount" 		aris_typenum="CT_AFFECTS" 			direction="out" mapping_object_ref="HIERARCHY_REGULATION_REGULATION"/>
+		<mappingLink id="finaccount" 		aris_typenum="CT_AFFECTS" 			direction="out" mapping_object_ref="HIERARCHY_REGULATION_CHAPTER"/>
+		<mappingLink id="finaccount" 		aris_typenum="CT_AFFECTS" 			direction="out" mapping_object_ref="HIERARCHY_REGULATION_CLAUSE"/>
+		<mappingLink id="finaccount" 		aris_typenum="CT_AFFECTS" 			direction="out" mapping_object_ref="HIERARCHY_REGULATION_TECH_TERM"/>
+		<mappingLink id="process" 			aris_typenum="CT_OCCUR"				direction="out"	mapping_object_ref="HIERARCHY_PROCESS"/>
+        <mappingLink id="process" 			aris_typenum="CT_IS_EXPOS_TO"		direction="assign_in"	mapping_object_ref="HIERARCHY_PROCESS"/>
+
+		<mappingLink id="regrequirements" 	aris_typenum="CT_IS_EXPOS_TO" 		direction="in" 	mapping_object_ref="REGULATORYREQUIREMENT"
+					is_top_down_reverse="true"/>
+					
+		<mappingLink id="manager_group" 	aris_typenum="CT_IS_TECH_RESP_3" 	direction="in" 	mapping_object_ref="USERGROUP" grouprole="riskmanager"/>
+		
+		<!-- ~~~~ Risk management ~~~~ -->
+		<mappingAttr id="risk_management_relevant"  type="Boolean" 					aris_typenum="AT_GRC_RISK_MANAGEMENT_RELEVANT"/>
+		<mappingAttr id="assessment_activities" 	type="Text" 					aris_typenum="AT_GRC_ASSESSMENT_ACTIVITIES"/> 	 
+		<mappingAttr id="frequency" 				type="Enum_assessment_frequency" aris_typenum="AT_GRC_ASSESSMENT_FREQUENCY"/>
+		<mappingAttr id="event_driven_allowed"      type="Boolean" 					aris_typenum="EVENT_DRIVEN_ALLOWED#AT_GRC_EVENT_DRIVEN_ASSESSMENTS_ALLOWED#AT_GRC_ASSESSMENT_FREQUENCY#AVT_RM_ASSESSMENT_FREQUENCY_EVENT_DRIVEN"/> 
+		<mappingAttr id="duration"                  type="Number" 					aris_typenum="AT_GRC_RISK_ASSESSMENT_DURATION"/> 	 
+		<mappingAttr id="startdate" 				type="Date" 					aris_typenum="AT_GRC_START_DATE_OF_RISK_ASSESSMENTS"/>
+		<mappingAttr id="enddate" 					type="Date" 					aris_typenum="AT_GRC_END_DATE_OF_RISK_ASSESSMENTS"/> 
+
+		<mappingLink id="risk_category" 	aris_typenum="CT_SUBS_1" 			direction="in"	mapping_object_ref="HIERARCHY_RISKCAT"/>
+		<mappingLink id="orgunit" 			aris_typenum="CT_AFFECTS" 			direction="out" mapping_object_ref="HIERARCHY_ORGUNIT"/>
+		<mappingLink id="appsystem" 		aris_typenum="CT_AFFECTS" 			direction="out" mapping_object_ref="HIERARCHY_APPSYSTYPE_TYPE"/>
+		<mappingLink id="owner_group" 		aris_typenum="CT_IS_TECH_RESP_3" 	direction="in"	mapping_object_ref="USERGROUP" grouprole="riskowner">
+			<linkCondition mapping_attribute_ref="risk_management_relevant" mode="EQ" value="true"/>
+		</mappingLink>
+		<mappingLink id="reviewer_group" 	aris_typenum="CT_IS_TECH_RESP_3" 	direction="in"	mapping_object_ref="USERGROUP" grouprole="riskreviewer">
+			<linkCondition mapping_attribute_ref="risk_management_relevant" mode="EQ" value="true"/>
+		</mappingLink>
+		
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_1"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_2"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_3"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_4"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_1"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_2"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_3"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_4"/>
+		
+		<mappingLink id="merge"     aris_typenum="CT_IS_ASSIG_6" direction="in" mapping_object_ref="RISK" 
+					 merge_link_mapping_attribute_refs="process,finaccount,orgunit,appsystem,risk_category,manager_group,owner_group,reviewer_group"/>
+	</mappingObject>
+	
+	<!--COMPLIANCEASSESSMENTDEF-->
+	<mappingObject id="COMPLIANCEASSESSMENTDEF" arcm_objtype="COMPLIANCEASSESSMENTDEF" aris_typenum="OT_COMPLIANCE_ASSESSMENT_DEF">
+        
+        <exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+        
+        <mappingAttr id="name"                  type="String" 							aris_typenum="AT_NAME"/>
+        <mappingAttr id="description" 			type="Text" 							aris_typenum="AT_DESC"/>
+		
+		<mappingAttr id="activities" 			type="Text" 								aris_typenum="AT_GRC_ASSESSMENT_ACTIVITIES"/>
+		<mappingAttr id="frequency" 			type="Enum_regulatorymanagement_frequency" 	aris_typenum="AT_GRC_ASSESSMENT_FREQUENCY"/>
+		<mappingAttr id="event_driven_allowed"  type="Boolean" 								aris_typenum="AT_GRC_EVENT_DRIVEN_ASSESSMENTS_ALLOWED"/>
+		<mappingAttr id="duration"              type="Number" 								aris_typenum="AT_GRC_ASSESSMENT_DURATION"/>
+		<mappingAttr id="startdate" 			type="Date" 								aris_typenum="AT_GRC_ASSESSMENT_START_DATE"/>
+		<mappingAttr id="enddate" 				type="Date" 					        	aris_typenum="AT_GRC_ASSESSMENT_END_DATE"/>
+		
+		
+		<mappingLink id="regulation" 			aris_typenum="CT_REFS_TO_2" 		direction="out" mapping_object_ref="HIERARCHY_REGULATION_CLAUSE"/>
+		<mappingLink id="regulation" 			aris_typenum="CT_REFS_TO_2" 		direction="out" mapping_object_ref="HIERARCHY_REGULATION_CHAPTER"/> 
+		<mappingLink id="regulation" 			aris_typenum="CT_REFS_TO_2" 		direction="out" mapping_object_ref="HIERARCHY_REGULATION_REGULATION"/>
+		
+		<mappingLink id="regulatory_requirement" aris_typenum="CT_REFS_TO_2" 		  	direction="in" mapping_object_ref="REGULATORYREQUIREMENT"
+				is_top_down_reverse="true" />
+		
+		<mappingLink id="appsystem" 		aris_typenum="CT_CONC_3"   				direction="out" mapping_object_ref="HIERARCHY_APPSYSTYPE_TYPE"/>
+		<mappingLink id="data" 			    aris_typenum="CT_CONC_3"				direction="out"	mapping_object_ref="HIERARCHY_DATA"/>
+		<mappingLink id="orgunit" 			aris_typenum="CT_CONC_3" 			 	direction="out" mapping_object_ref="HIERARCHY_ORGUNIT"/>
+		<mappingLink id="process" 			aris_typenum="CT_CONC_3"				direction="out"	mapping_object_ref="HIERARCHY_PROCESS"/>
+		<mappingLink id="risks" 			aris_typenum="CT_CONC_3"				direction="out"	mapping_object_ref="RISK"/>
+		
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_1"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_2"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_3"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_4"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_1"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_2"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_3"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_4"/>
+		
+		<mappingLink id="manager_group" 		   aris_typenum="CT_IS_ASSIG_1" 	direction="in" 	mapping_object_ref="USERGROUP" grouprole="regulationmanager"/>
+		<mappingLink id="owner_group" 			   aris_typenum="CT_IS_ASSIG_1" 	direction="in" 	mapping_object_ref="USERGROUP" grouprole="regulationowner"/>
+		<mappingLink id="owner_group" 			   aris_typenum="CT_IS_ASSIG_1" 	direction="in" 	mapping_object_ref="USERGROUP" grouprole="hierarchyowner"/>
+		<mappingLink id="reviewer_group" 		   aris_typenum="CT_IS_ASSIG_1" 	direction="in" 	mapping_object_ref="USERGROUP" grouprole="regulationreviewer"/>
+    </mappingObject>
+
+	<!--OPTION-->
+	<mappingObject id="OPTION" arcm_objtype="OPTION" aris_typenum="OT_SURVEY_OPTION">
+		<mappingAttr id="name"              type="String" 			aris_typenum="AT_NAME"/>
+        <mappingAttr id="description" 		type="Text" 			aris_typenum="AT_DESC"/>
+        <mappingAttr id="optionValue" 		type="Double" 			aris_typenum="AT_OPTION_VALUE"/>
+		<mappingAttr id="notification"      type="Text"             aris_typenum="AT_NOTIFICATION"/>
+	</mappingObject>
+
+	<!--OPTIONSET-->
+	<mappingObject id="OPTIONSET" arcm_objtype="OPTIONSET" aris_typenum="OT_SURVEY_OPTION_SET">
+		<mappingAttr id="name"          type="String" 	aris_typenum="AT_NAME"/>
+		<mappingAttr id="description" 	type="Text" 	aris_typenum="AT_DESC"/>
+
+		<mappingLink id="options" aris_typenum="CT_SURVEY_HAS" direction="out" mapping_object_ref="OPTION"
+					 sort_method="sort_by_occ_distance">
+			<mappingAttr id="options_weighting" type="Double" aris_typenum="CONSTANT#1.0"/>
+		</mappingLink>
+	</mappingObject>
+
+	<!--QUESTION - standard info + dependent visibility info-->
+	<mappingObject id="QUESTION" arcm_objtype="QUESTION" aris_typenum="OT_SURVEY_QUESTION">
+		<mappingAttr id="question_text" 	    	type="Text" 				aris_typenum="AT_DESC"/>
+		<mappingAttr id="type"				    	type="Enum_question_type" 	aris_typenum="AT_QUESTION_TYPE"/>
+        <mappingAttr id="optionalQuestion" 	    	type="Boolean" 				aris_typenum="AT_OPTIONAL_QUESTION"/>
+        <mappingAttr id="remark" 			    	type="Text" 				aris_typenum="AT_REM"/>
+        <mappingAttr id="annotationAllowed"     	type="Boolean" 				aris_typenum="AT_ANNOTATIONS_ALLOWED"/>
+		<mappingAttr id="reviewerAnnotationAllowed" type="Boolean" 				aris_typenum="AT_REVIEWER_NOTES_ALLOWED"/>
+        <mappingAttr id="documentUploadAllowed" 	type="Boolean"              aris_typenum="AT_DOCUMENT_UPLOAD_ALLOWED"/>
+		<mappingAttr id="reviewerRatesAnswer" 		type="Boolean" 				aris_typenum="AT_REVIEWER_RATES_ANSWER"/>
+        <mappingAttr id="objdef_guid" 		    	type="String" 				aris_typenum="OBJECTGUID"/>
+
+		<mappingLink id="options" 					aris_typenum="CT_SURVEY_HAS" 			direction="out" mapping_object_ref="OPTION" 
+					 sort_method="sort_by_occ_distance"/>
+		<mappingLink id="optionSet"                 aris_typenum="CT_SURVEY_CONTAINS" 		direction="out" mapping_object_ref="OPTIONSET"/>
+		<mappingLink id="activatedBy" 				aris_typenum="CT_ACTIVATES_1" 			direction="in" 	mapping_object_ref="OPTION"/>
+		<mappingLink id="activatedInContextWith"	aris_typenum="CT_IS_VALID_CONTEXT_OF" 	direction="out" mapping_object_ref="QUESTION"
+					 cycle_link="true"/>
+	
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_1"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_2"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_3"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_4"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_1"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_2"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_3"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_4"/>
+	</mappingObject>
+
+	<!--SECTION - standard info + dependent visibility info-->
+	<mappingObject id="SECTION" arcm_objtype="SECTION" aris_typenum="OT_SURVEY_SECTION"
+				   root_mapping_object_ref="QUESTIONNAIRE_TEMPLATE" arcm_root_reverse_connection_attr="relQuestionnaireTemplate" arcm_guid_attr="objdef_guid">
+		<mappingAttr id="name"          type="String" 	aris_typenum="AT_NAME"/>
+		<mappingAttr id="description" 	type="Text" 	aris_typenum="AT_DESC"/>
+		<mappingAttr id="targetScore"   type="Double" 	aris_typenum="AT_SCORE_TARGET"/>
+		<mappingAttr id="objdef_guid" 	type="String" 	aris_typenum="OBJECTGUID"/>
+
+		<mappingLink id="subSections" 				aris_typenum="CT_SURVEY_CONTAINS" 		direction="out" mapping_object_ref="SECTION"
+					 sort_method="sort_by_occ_distance"	is_hierarchical="true" cycle_link="true"/>
+		<mappingLink id="questions" 				aris_typenum="CT_SURVEY_CONTAINS" 		direction="out" mapping_object_ref="QUESTION"
+					 sort_method="sort_by_occ_distance"/>
+		<mappingLink id="activatedBy" 				aris_typenum="CT_ACTIVATES_1" 			direction="in" 	mapping_object_ref="OPTION"/>
+		<mappingLink id="activatedInContextWith" 	aris_typenum="CT_IS_VALID_CONTEXT_OF" 	direction="out" mapping_object_ref="QUESTION"/>
+	</mappingObject>
+
+	<!--QUESTIONNAIRE_TEMPLATE-->
+	<mappingObject id="QUESTIONNAIRE_TEMPLATE" arcm_objtype="QUESTIONNAIRE_TEMPLATE" aris_typenum="OT_SURVEY_QUEST_TMPL">
+		
+		<exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+		
+		<mappingAttr id="name"              type="String" 			aris_typenum="AT_NAME"/>
+		<mappingAttr id="description" 		type="Text" 			aris_typenum="AT_DESC"/>
+		<mappingAttr id="autoNumbering" 	type="Boolean" 			aris_typenum="AT_AUTOMATIC_NUMBERING"/>
+		<mappingAttr id="targetScore" 		type="Double" 			aris_typenum="AT_SCORE_TARGET"/>
+		
+		<!-- linked sections - both explicit and implicit -->
+		<!-- making this link hierarchical ensures that QUESTIONNAIRE_TEMPLATE is hierarchical root for explicit top-level SECTIONs -->
+		<mappingLink id="sections"			aris_typenum="CT_SURVEY_CONTAINS" 	direction="out" mapping_object_ref="SECTION" 
+					 sort_method="sort_by_occ_distance" is_hierarchical="true"/>
+		<mappingLink id="manager_group"		aris_typenum="CT_IS_ASSIG_1" 		direction="in" 	mapping_object_ref="USERGROUP" grouprole="surveymanager"/>
+	
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_1"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_2"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_3"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_4"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_1"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_2"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_3"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_4"/>
+	</mappingObject>
+
+	<!--SURVEYTASK-->
+	<mappingObject id="SURVEYTASK" arcm_objtype="SURVEYTASK" aris_typenum="OT_SURVEY_TASK">	  
+		<mappingAttr id="name" 					type="String" 							aris_typenum="AT_NAME"/>
+        <mappingAttr id="description"           type="Text"                             aris_typenum="AT_DESC"/>
+		<mappingAttr id="allowCopyValues" 		type="Boolean" 							aris_typenum="AT_COPYING_VALUES_ALLOWED"/>
+		<mappingAttr id="frequency"             type="Enum_survey_task_frequency" 		aris_typenum="AT_SURVEYTASK_FREQUENCY"/>
+		<mappingAttr id="event_driven_allowed" 	type="Boolean" 							aris_typenum="EVENT_DRIVEN_ALLOWED#AT_EVENT_DRIVEN_SURVEYS_ALLOWED#AT_SURVEYTASK_FREQUENCY#AVT_EVENT_DRIVEN"/>
+		<mappingAttr id="duration" 				type="Number" 							aris_typenum="AT_SURVEYTASK_DURATION"/>
+		<mappingAttr id="startdate"             type="Date" 							aris_typenum="AT_SURVEYTASK_START_DATE"/>
+		<mappingAttr id="enddate"               type="Date" 							aris_typenum="AT_SURVEYTASK_END_DATE"/>
+        <mappingAttr id="control_period"        type="Enum_survey_task_controlperiod" 	aris_typenum="AT_SURVEYTASK_CTRL_PERIOD"/>
+		<mappingAttr id="control_period_offset" type="Number" 							aris_typenum="AT_SURVEYTASK_OFFSET"/>
+
+		<mappingLink id="questionnaireTemplate" aris_typenum="CT_IS_INITIATED_BY" 	direction="in" 	mapping_object_ref="QUESTIONNAIRE_TEMPLATE"
+                     inherit_export_relevance="true"/>
+		<mappingLink id="risks"                 aris_typenum="CT_CONC_3" 			direction="out" mapping_object_ref="RISK"/>
+		<mappingLink id="controls" 				aris_typenum="CT_CONC_3" 			direction="out" mapping_object_ref="CONTROL"/>
+		<mappingLink id="test_definitions" 		aris_typenum="CT_CONC_3" 			direction="out" mapping_object_ref="TESTDEFINITION"/>
+		<mappingLink id="relatedAppSystems"     aris_typenum="CT_CONC_3" 			direction="out" mapping_object_ref="HIERARCHY_APPSYSTYPE_TYPE"/>
+		<mappingLink id="relatedOrgunits"       aris_typenum="CT_CONC_3" 			direction="out" mapping_object_ref="HIERARCHY_ORGUNIT"/>
+		<mappingLink id="relatedProcesses" 		aris_typenum="CT_CONC_3" 			direction="out" mapping_object_ref="HIERARCHY_PROCESS"/>
+		<mappingLink id="relatedRegulations"    aris_typenum="CT_CONC_3" 			direction="out" mapping_object_ref="HIERARCHY_REGULATION_TECH_TERM"/>
+		<mappingLink id="relatedRegulations"    aris_typenum="CT_CONC_3" 			direction="out" mapping_object_ref="HIERARCHY_REGULATION_CLAUSE"/>
+		<mappingLink id="relatedRegulations"    aris_typenum="CT_CONC_3" 			direction="out" mapping_object_ref="HIERARCHY_REGULATION_CHAPTER"/>
+		<mappingLink id="relatedRegulations"    aris_typenum="CT_CONC_3" 			direction="out" mapping_object_ref="HIERARCHY_REGULATION_REGULATION"/>
+		<mappingLink id="relatedRegulations"    aris_typenum="CT_CONC_3" 			direction="out" mapping_object_ref="HIERARCHY_REGULATION_CATEGORY"/>
+		<mappingLink id="relatedCategories"     aris_typenum="CT_CONC_3" 			direction="out" mapping_object_ref="HIERARCHY_RISKCAT"/>
+		<mappingLink id="manager_group" 		aris_typenum="CT_IS_ASSIG_1" 		direction="in" 	mapping_object_ref="USERGROUP" grouprole="surveymanager"/>
+        <mappingLink id="owner_group"           aris_typenum="CT_IS_ASSIG_1" 		direction="in" 	mapping_object_ref="USERGROUP" grouprole="questionnaireowner"/>
+		<mappingLink id="reviewer_group" 		aris_typenum="CT_IS_ASSIG_1" 		direction="in" 	mapping_object_ref="USERGROUP" grouprole="surveyreviewer"/>
+	</mappingObject>
+
+	<!--AUDITSTEPTEMPLATE-->
+	<mappingObject  id="AUDITSTEPTEMPLATE" arcm_objtype="AUDITSTEPTEMPLATE" aris_typenum="OT_FUNC_INST" aris_symbolnum="ST_FUNC_INST"
+					root_mapping_object_ref="AUDITTEMPLATE">
+		
+		<mappingAttr id="name"              type="String" 				aris_typenum="AT_NAME"/>
+		<mappingAttr id="description" 		type="Text" 				aris_typenum="AT_DESC"/>
+		<mappingAttr id="plannedstartdate"  type="Date" 				aris_typenum="AT_DATE_START"/>
+		<mappingAttr id="plannedenddate" 	type="Date" 				aris_typenum="ENDDATE#AT_DATE_START#AT_MAX_TL_TIME"/>
+		<mappingAttr id="processingtime" 	type="Number" 				aris_typenum="DURATION#AT_DES_PROC_TIME"/>
+		<mappingAttr id="step_type" 		type="Enum_auditstep_type" 	aris_typenum="AT_AUDIT_STEP_TYPE"/>
+
+		<!-- link to subordinated steps -->
+		<mappingLink id="steps" 		aris_typenum="CT_BELONGS_TO_10" 			direction="in" mapping_object_ref="AUDITSTEPTEMPLATE"
+					 sort_method="sort_by_xy_position" sort_model_typenum="MT_PROJECT_SCHEDULE" is_hierarchical="true"/>
+		<!-- links to scope -->
+		<mappingLink id="scope" 		aris_typenum="CT_IS_WITHIN_THE_SCOPE_OF" 	direction="in" mapping_object_ref="HIERARCHY_PROCESS"/>
+		<mappingLink id="scope" 		aris_typenum="CT_IS_WITHIN_THE_SCOPE_OF" 	direction="in" mapping_object_ref="HIERARCHY_ORGUNIT"/>
+		<mappingLink id="scope" 		aris_typenum="CT_IS_WITHIN_THE_SCOPE_OF" 	direction="in" mapping_object_ref="HIERARCHY_REGULATION_TECH_TERM"/>
+		<mappingLink id="scope" 		aris_typenum="CT_IS_WITHIN_THE_SCOPE_OF" 	direction="in" mapping_object_ref="HIERARCHY_APPSYSTYPE_TYPE"/>
+		<mappingLink id="scope" 		aris_typenum="CT_IS_WITHIN_THE_SCOPE_OF" 	direction="in" mapping_object_ref="HIERARCHY_RISKCAT"/>
+		<mappingLink id="owner_group"	aris_typenum="CT_EXEC_2" 					direction="in" mapping_object_ref="USERGROUP" grouprole="auditstepowner"/>
+		
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_1"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_2"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_3"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_4"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_1"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_2"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_3"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_4"/>
+	</mappingObject>
+
+	<!--AUDITTEMPLATE-->
+	<mappingObject 	id="AUDITTEMPLATE" arcm_objtype="AUDITTEMPLATE" aris_typenum="OT_FUNC_INST" aris_symbolnum="ST_PROJECT">
+		
+		<exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+		
+		<mappingAttr id="name" 			    type="String" 	            aris_typenum="AT_NAME"/>
+		<mappingAttr id="description" 		type="Text" 	            aris_typenum="AT_DESC"/>
+		<mappingAttr id="objectives" 		type="Text" 	            aris_typenum="AT_AUDIT_OBJECTIVE"/>
+		<mappingAttr id="audit_client" 	    type="Text" 	            aris_typenum="AT_AUDIT_CLIENT"/> 
+		<mappingAttr id="auditstartdate" 	type="Date" 	            aris_typenum="AT_DATE_START"/>
+		<mappingAttr id="auditenddate" 	    type="Date" 	            aris_typenum="ENDDATE#AT_DATE_START#AT_MAX_TL_TIME"/>
+		<mappingAttr id="plannedstartdate"	type="Date" 	            aris_typenum="AT_START_DATE_OF_AUDIT_PREPARATION"/>
+		<mappingAttr id="controlstartdate"	type="Date" 	            aris_typenum="AT_START_DATE_OF_CONTROL_PERIOD"/>
+		<mappingAttr id="controlenddate"	type="Date" 	            aris_typenum="AT_END_DATE_OF_CONTROL_PERIOD"/>
+		<mappingAttr id="template_status" 	type="Enum_audit_status"    aris_typenum="CONSTANT#released"/>
+
+		<!-- link to subordinated steps -->
+		<!-- making this link hierarchical ensures that AUDITTEMPLATE is hierarchical root for top-level AUDITSTEPTEMPLATE -->
+		<mappingLink id="steps" 			aris_typenum="CT_IS_PRCS_ORNT_SUPER" 		direction="assign_out" mapping_object_ref="AUDITSTEPTEMPLATE"
+					 sort_method="sort_by_xy_position" sort_model_typenum="MT_PROJECT_SCHEDULE" is_hierarchical="true">
+            <!-- audit templates has an assignment connection to each sub step but here we are interested in the top level steps only -->
+            <!-- top level steps are those who have a COUNT_BACK of 0 to superior AUDITSTEPTEMPLATE objects via AUDITSTEPTEMPLATE(!) attribute "steps" -->
+            <linkTargetCondition  mode="COUNT_BACK" mapping_link_ref="steps"  max_value="0"/> 
+		</mappingLink>
+		<!-- links to scope -->
+		<mappingLink id="scope" 			aris_typenum="CT_IS_WITHIN_THE_SCOPE_OF" 	direction="in" 	mapping_object_ref="HIERARCHY_PROCESS"/>
+		<mappingLink id="scope" 			aris_typenum="CT_IS_WITHIN_THE_SCOPE_OF" 	direction="in" 	mapping_object_ref="HIERARCHY_ORGUNIT"/>
+		<mappingLink id="scope" 			aris_typenum="CT_IS_WITHIN_THE_SCOPE_OF" 	direction="in" 	mapping_object_ref="HIERARCHY_REGULATION_TECH_TERM"/>
+		<mappingLink id="scope" 			aris_typenum="CT_IS_WITHIN_THE_SCOPE_OF" 	direction="in" 	mapping_object_ref="HIERARCHY_APPSYSTYPE_TYPE"/>
+		<mappingLink id="scope" 			aris_typenum="CT_IS_WITHIN_THE_SCOPE_OF" 	direction="in" 	mapping_object_ref="HIERARCHY_RISKCAT"/>
+		<mappingLink id="owner_group"		aris_typenum="CT_EXEC_2" 					direction="in" 	mapping_object_ref="USERGROUP" grouprole="auditowner"/>
+		<mappingLink id="reviewer_group"	aris_typenum="CT_EXEC_2" 					direction="in" 	mapping_object_ref="USERGROUP" grouprole="auditreviewer"/>
+		<mappingLink id="auditor_group"		aris_typenum="CT_EXEC_2" 					direction="in" 	mapping_object_ref="USERGROUP" grouprole="auditauditor"/>
+		
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_1"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_2"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_3"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_4"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_1"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_2"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_3"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_4"/>
+	</mappingObject>
+
+	<!--POLICYREVIEWTASK-->
+	<mappingObject id="POLICYREVIEWTASK" arcm_objtype="POLICYREVIEWTASK" aris_typenum="VIRTUAL"> <!-- derived from incoming link POLICYDEFINITION#policyreviewtask -->
+		<mappingAttr id="reviewRelevant" 		type="Boolean" 						    aris_typenum="AT_REVIEW_RELEVANT"/>
+		<mappingAttr id="activities" 			type="Text" 						    aris_typenum="AT_REVIEW_ACTIVITY"/>
+		<mappingAttr id="frequency" 			type="Enum_reviewtask_frequency"        aris_typenum="AT_REVIEW_FREQUENCY"/>
+		<mappingAttr id="event_driven_allowed"  type="Boolean"                          aris_typenum="EVENT_DRIVEN_ALLOWED#AT_EVENT_DRIVEN_REVIEW_ALLOWED#AT_REVIEW_FREQUENCY#AVT_RM_ASSESSMENT_FREQUENCY_EVENT_DRIVEN"/>
+		<mappingAttr id="control_period" 		type="Enum_reviewtask_controlperiod"    aris_typenum="AT_AAM_TESTDEF_CTRL_PERIOD"/>
+		<mappingAttr id="duration"              type="Number"                           aris_typenum="AT_REVIEW_EXECUTION_TIME_LIMIT"/>
+		<mappingAttr id="startdate" 			type="Date"                             aris_typenum="AT_START_DATE_OF_POLICY_REVIEWS"/>
+		<mappingAttr id="enddate" 				type="Date"                             aris_typenum="AT_END_DATE_OF_POLICY_REVIEWS"/>
+		<mappingAttr id="name"                  type="String"               			aris_typenum="AT_NAME"/>
+		<!-- owner group is the same as the one of the referencing policy definition -->
+		<mappingLink id="owner_group" aris_typenum="CT_IS_TECH_RESP_3" direction="in" mapping_object_ref="USERGROUP" grouprole="policyowner"/>
+	</mappingObject>
+
+	<!-- POLICY DEFINITION -->
+	<mappingObject id="POLICYDEFINITION" arcm_objtype="POLICYDEFINITION"    aris_typenum="OT_POLICY">
+		
+		<exportRelevanceCondition type="Boolean" aris_typenum="AT_AAM_EXPORT_RELEVANT" mode="EQ" value="true"/>
+		
+		<mappingAttr id="name"                  type="String"               aris_typenum="AT_NAME"/>
+		<mappingAttr id="description" 			type="Text" 			    aris_typenum="AT_DESC"/>
+		<mappingAttr id="policy_type" 			type="Enum_policy_type" 	aris_typenum="AT_POLICY_TYPE"/>
+		<mappingAttr id="confirmation_text" 	type="Text" 			    aris_typenum="AT_CONFIRMATION_TEXT"/>
+		<mappingAttr id="startdate" 			type="Date"                 aris_typenum="AT_START_DATE_APPROVAL_PERIOD_OWNER"/>
+		<mappingAttr id="enddate" 				type="Date"                 aris_typenum="AT_END_DATE_APPROVAL_PERIOD_OWNER"/>
+		<mappingAttr id="approverstartdate" 	type="Date"                 aris_typenum="AT_START_DATE_APPROVAL_PERIOD_APPROVER"/>
+		<mappingAttr id="approverenddate" 		type="Date"                 aris_typenum="AT_END_DATE_APPROVAL_PERIOD_APPROVER"/>
+		<mappingAttr id="publishingstartdate" 	type="Date"                 aris_typenum="AT_START_DATE_PUBLISHING_PERIOD"/>
+		<mappingAttr id="publishingenddate" 	type="Date"                 aris_typenum="AT_END_DATE_PUBLISHING_PERIOD"/>
+		<mappingAttr id="duration"              type="Number"               aris_typenum="AT_CONFIRMATION_DURATION"/>
+
+		<mappingLink id="policyreviewtask"                                                          mapping_object_ref="POLICYREVIEWTASK"/>
+		<mappingLink id="risks" 			aris_typenum="CT_IS_REDU_BY" 			direction="in" 	mapping_object_ref="RISK"/>
+		
+		<mappingLink id="process" 			aris_typenum="CT_AFFECTS" 				direction="out" mapping_object_ref="HIERARCHY_PROCESS"/>
+		<mappingLink id="orgunit" 			aris_typenum="CT_AFFECTS" 				direction="out" mapping_object_ref="HIERARCHY_ORGUNIT"/>
+		<mappingLink id="finaccount" 		aris_typenum="CT_INFLUENCES" 			direction="in" mapping_object_ref="HIERARCHY_REGULATION_CLAUSE"/>
+		<mappingLink id="finaccount" 		aris_typenum="CT_INFLUENCES" 			direction="in" mapping_object_ref="HIERARCHY_REGULATION_CHAPTER"/>
+		<mappingLink id="finaccount" 		aris_typenum="CT_INFLUENCES" 			direction="in" mapping_object_ref="HIERARCHY_REGULATION_REGULATION"/>
+		<mappingLink id="finaccount" 		aris_typenum="CT_AFFECTS" 				direction="out" mapping_object_ref="HIERARCHY_REGULATION_TECH_TERM"/>
+		<mappingLink id="appsystem" 		aris_typenum="CT_AFFECTS" 				direction="out" mapping_object_ref="HIERARCHY_APPSYSTYPE_TYPE"/>
+		
+		<mappingLink id="regrequirements" 	aris_typenum="CT_INFLUENCES" 			direction="in"  mapping_object_ref="REGULATORYREQUIREMENT"
+					is_top_down_reverse="true"/>
+					
+		<mappingLink id="owner_group" 		aris_typenum="CT_IS_TECH_RESP_3" 		direction="in" 	mapping_object_ref="USERGROUP" grouprole="policyowner"/>
+		<mappingLink id="reviewer_group" 	aris_typenum="CT_IS_TECH_RESP_3" 		direction="in" 	mapping_object_ref="USERGROUP" grouprole="policyreviewer"/>
+		<mappingLink id="approver_group" 	aris_typenum="CT_IS_TECH_RESP_3" 		direction="in" 	mapping_object_ref="USERGROUP" grouprole="policyapprover"/>
+		<mappingLink id="addressee_group" 	aris_typenum="CT_IS_TECH_RESP_3" 		direction="in" 	mapping_object_ref="USERGROUP" grouprole="policyaddressee"/>
+		<mappingLink id="auditor_group" 	aris_typenum="CT_IS_TECH_RESP_3" 		direction="in" 	mapping_object_ref="USERGROUP" grouprole="policyauditor"/>
+
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_1"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_2"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_3"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_SIMPLE_4"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_1"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_2"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_3"/>
+		<mappingLink id="documents" mapping_object_ref="DOCUMENT_ADS_4"/>
+	</mappingObject>
+
+</aris2arcm>

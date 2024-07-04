@@ -1,0 +1,142 @@
+<!--
+
+    Copyright (C) 1992-2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA,
+    and/or its subsidiaries and/or its affiliates and/or their licensors.
+
+    Use, reproduction, transfer, publication or disclosure is prohibited
+    except as specifically provided for in your License Agreement with Software AG.
+
+    Version: 10.0.22.0.3295151
+
+-->
+<transformationConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                             xsi:noNamespaceSchemaLocation="./xsd/transformation.xsd" version="0.0.3">
+
+    <!-- ******************************************************************************** -->
+    <!-- Organizational unit (43) -->
+    <mappedObject name="orgUnit" typeNum="43">
+        <mapping name="name" type="string">
+            <attribute typeNum="1" function="target"/>
+        </mapping>
+        
+        <!-- Subordinate organizational unit -->
+        <mapping name="children" type="itemList" target="orgUnit">
+            <!-- is superior (3), is composed of (7), is technical superior to (8), is disciplinary superior to (9), is responsible for (211) -->
+            <connection typeNum="3,7,8,9,211" direction="out" function="filter">
+                <object typeNum="43" function="target"/>
+            </connection>
+        </mapping>
+        
+        <!-- Positions -->
+        <mapping name="positions" type="itemList" target="position">
+            <!-- is composed of (7) -->
+            <connection typeNum="7" direction="out" function="filter">
+                <!-- Position (45) -->
+                <object typeNum="45" function="target"/>
+            </connection>
+        </mapping>
+        
+        <!-- Roles -->
+        <mapping name="roles" type="itemList" target="role">
+            <!-- belongs to (6), is composed of (7), performs (480) -->
+            <connection typeNum="6,7,480" direction="out" function="filter">
+                <!-- Role (78) -->
+                <object typeNum="78" function="target"/>
+            </connection>
+        </mapping>
+       
+        <!-- Functions (carries out) -->
+        <mapping name="functions" type="itemList" target="function">
+            <!-- carries out (65) -->
+            <connection typeNum="65" direction="out" function="filter">
+                <!-- Function (22) -->
+                <object typeNum="22" function="target"/>
+            </connection>
+        </mapping>
+        
+        <!-- systems (is responsible for) -->
+        <mapping name="systems" type="itemList" target="system">
+            <!-- is responsible for (168), is ...responsible for... (851,852, 853,854,855,856,857,858,859,860,861,862) -->
+            <connection typeNum="168,851,852, 853,854,855,856,857,858,859,860,861,862" direction="out" function="filter">
+                <!-- Application system type (6) -->
+                <object typeNum="6" function="target"/>
+            </connection>
+        </mapping>       
+        <!-- systems (can be user) -->
+        <mapping name="systems" type="itemList" target="system">
+            <!-- can be user (230) -->
+            <connection typeNum="230" direction="out" function="filter">
+                <!-- Application system type (6) -->
+                <object typeNum="6" function="target"/>
+            </connection>
+        </mapping>       
+    </mappedObject>
+
+    <!-- ******************************************************************************** -->
+    <!-- Position (45) -->
+    <mappedObject name="position" editTypeNum="45" typeNum="45">
+        <mapping name="name" type="string">
+            <attribute typeNum="1" function="target,edit"/>
+        </mapping>
+        
+        <!-- Functions (carries out) -->
+        <mapping name="functions" type="itemList" target="function">
+            <!-- carries out (65) -->
+            <connection typeNum="65" direction="out" function="filter">
+                <!-- Function (22) -->
+                <object typeNum="22" function="target"/>
+            </connection>
+        </mapping>
+    </mappedObject>
+
+    <!-- ******************************************************************************** -->
+    <!-- Role (78) -->        
+    <mappedObject name="role" editTypeNum="78" typeNum="78">
+        <mapping name="name" type="string">
+            <attribute typeNum="1" function="target"/>
+        </mapping>
+
+        <!-- Functions (carries out) -->        
+        <mapping name="functions" type="itemList" target="function">
+            <!-- carries out (218) -->
+            <connection typeNum="218" direction="out" function="filter">
+                <!-- Function (22) -->
+                <object typeNum="22" function="target"/>
+            </connection>
+        </mapping>
+    </mappedObject>
+
+    <!-- ******************************************************************************** -->
+    <!-- Function (22) -->   
+    <mappedObject name="function" typeNum="22">
+        <mapping name="name" type="string">
+            <attribute typeNum="1" function="target"/>
+        </mapping>
+
+        <mapping name="children" type="itemList" target="function">
+            <!-- is process-oriented superior (39) -->
+            <connection typeNum="39" direction="out" function="filter">
+                <object typeNum="22" function="target"/>
+            </connection>
+        </mapping>
+        
+        <!-- systems (supports) -->
+        <mapping name="systems" type="itemList" target="system">
+            <!-- supports (221) -->
+            <connection typeNum="221" direction="in" function="filter">
+                <!-- Application system type (6) -->
+                <object typeNum="6" function="target"/>
+            </connection>
+        </mapping>
+        
+    </mappedObject>
+
+    <!-- ******************************************************************************** -->
+    <!-- Application system type (6) -->   
+    <mappedObject name="system" typeNum="6">
+        <mapping name="name" type="string">
+            <attribute typeNum="1" function="target"/>
+        </mapping>    
+    </mappedObject>
+        
+</transformationConfiguration>        

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 1992-2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA,
+    and/or its subsidiaries and/or its affiliates and/or their licensors.
+
+    Use, reproduction, transfer, publication or disclosure is prohibited
+    except as specifically provided for in your License Agreement with Software AG.
+
+    Version: 10.0.22.0.3295151
+
+-->
+
+<ReportRegistry>
+    <QuadrantConfiguration>
+        <!-- Definition of quadrant attribute, the number of the units and the use of rgb-values -->
+        <configuration>AT_QUADRANT</configuration>
+        <numberOfUnits>9</numberOfUnits>
+        <useRGB>true</useRGB> <!-- only false or true allowed -->
+        
+        <!-- 
+        When not using RGB-Values, the following values for assigned colors are allowed:
+        BLACK, BLUE, CYAN, GRAY, GREEN, MAGENTA, ORANGE, PINK, RED, WHITE, YELLOW
+        
+        When using RGB-Mode, the value has to match the following pattern: int r,int g,int b (values in the range 0 - 255)
+        e.g. 204,51,255 for a violet color (IMPORTANT: no spaces between the values)
+        -->
+        
+        <!--        
+        Q1 -> AVT_Q1 -> Value 5762
+        Q2 -> AVT_Q2 -> Value 5763
+        Q3 -> AVT_Q3 -> Value 5764
+        Q4 -> AVT_Q4 -> Value 5765
+        
+        Q1/Q2 -> AVT_Q1_Q2 -> Value 5766
+        Q2/Q3 -> AVT_Q2_Q3 -> Value 5767
+        Q3/Q4 -> AVT_Q3_Q4 -> Value 5768
+        Q1/Q4 -> AVT_Q1_Q4 -> Value 5769
+        Q1/Q2/Q3/Q4 -> AVT_Q1_Q2_Q3_Q4 -> Value 5770       
+        -->
+        
+        <!-- Assign colors to units -->
+        <attributeVal1>AVT_Q1</attributeVal1>
+        <AssignedColor1>0,255,0</AssignedColor1>
+
+        <attributeVal2>AVT_Q2</attributeVal2>
+        <AssignedColor2>255,102,0</AssignedColor2>
+
+        <attributeVal3>AVT_Q3</attributeVal3>
+        <AssignedColor3>255,0,0</AssignedColor3>
+
+        <attributeVal4>AVT_Q4</attributeVal4>
+        <AssignedColor4>0,102,102</AssignedColor4>
+
+        <attributeVal5>AVT_Q1_Q2</attributeVal5>
+        <AssignedColor5>0,0,0</AssignedColor5>
+        
+        <attributeVal6>AVT_Q2_Q3</attributeVal6>
+        <AssignedColor6>0,0,0</AssignedColor6>
+
+        <attributeVal7>AVT_Q3_Q4</attributeVal7>
+        <AssignedColor7>0,0,0</AssignedColor7>
+
+        <attributeVal8>AVT_Q1_Q4</attributeVal8>
+        <AssignedColor8>0,0,0</AssignedColor8>
+
+        <attributeVal9>AVT_Q1_Q2_Q3_Q4</attributeVal9>
+        <AssignedColor9>255,255,0</AssignedColor9>
+        
+    </QuadrantConfiguration>
+</ReportRegistry>

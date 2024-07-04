@@ -1,0 +1,46 @@
+/**
+ * Copyright (C) 1992-2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA,
+ * and/or its subsidiaries and/or its affiliates and/or their licensors.
+ *
+ * Use, reproduction, transfer, publication or disclosure is prohibited
+ * except as specifically provided for in your License Agreement with Software AG.
+ *
+ * Version: 10.0.22.0.3295151
+ *
+ * IMPORTANT NOTE:
+ *     Please note that this is a standard script provided with the product.
+ *     Any changes you make to this file will be overwritten during a product update and thus be irrecoverably lost.
+ *     If you want to adapt this script according to your individual needs, we urgently recommend that you create a copy of this file
+ *     and add your changes to the copy. The copied file will not be overwritten by a product update.
+ *     After a product update, it is advisable that you check your copied file against the updated version of the original file
+ *     and add all relevant changes or fixes to your copy.
+ */
+
+
+body              { background-image:url(<--process.gif-->); background-repeat:no-repeat; background-position:bottom right;
+                    font-family:Arial; font-size:12px; font-style:normal; font-weight:nromal; font-style:normal; }
+
+table             { border-collapse:collapse; margin:0px; padding:0px; }
+
+table.arrowup     { background-image:url(pfeil_hoch.gif); background-repeat:no-repeat; background-position:center;}
+
+td.arrowright     { background-image:url(pfeil_rechts1.gif); background-repeat:repeat-x; background-position:middle;}
+td.arrowrighthead { background-image:url(pfeil_rechts2.gif); background-repeat:no-repeat; background-position:left middle;}
+
+td.pbarea1        { background-color:#EEEEEE; border-style:solid; border-color:#222222; border-width:1px; }
+td.pbarea2        { background-color:#EEEEEE; border-style:solid; border-color:#222222; border-width:1px; }
+td.pbarea3        { background-color:#EEEEEE; border-style:solid; border-color:#222222; border-width:1px; }
+td.pbarea4        { background-color:#EEEEEE; border-style:solid; border-color:#222222; border-width:1px; }
+
+table.wkd1        { background-image:url(wkd_1.gif); background-repeat:no-repeat; background-position:0px 0xp;} 
+table.wkd2        { background-image:url(wkd_2.gif); background-repeat:no-repeat; background-position:0px 0xp;} 
+table.wkd3        { background-image:url(wkd_3.gif); background-repeat:no-repeat; background-position:0px 0xp;} 
+
+td.wkdname        { padding:2px 5px 10px 20px; text-align:center; font-family:Arial; font-size:12px; font-style:normal; font-weight:normal; font-style:normal; }
+
+td.legend         { text-align:center; vertical-align:middle; font-family:Arial; font-size:16px; font-style:normal; font-weight:bold;  font-style:normal; }
+td                { font-family:Arial; font-size:12px; font-style:normal; font-weight:normal; font-style:normal; }
+
+h1                { font-family:Arial; font-size:20px; font-style:normal; font-weight:bold; font-style:normal; }
+h2                { font-family:Arial; font-size:16px; font-style:normal; font-weight:bold; font-style:italic; }
+
