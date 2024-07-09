@@ -9,4 +9,5 @@ objDef.Attribute(Constant.AT_NAME, 1044).setValue("")
 
 var dummy = 0;
 var dummy1 = 1;
-var dummy2 = 2;s
+var dummy2 = 2;
+var adddedNow = 1;
