@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 1992-2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA,
+    and/or its subsidiaries and/or its affiliates and/or their licensors.
+
+    Use, reproduction, transfer, publication or disclosure is prohibited
+    except as specifically provided for in your License Agreement with Software AG.
+
+    Version: 10.0.22.0.3295151
+
+-->
+<ReportRegistry>
+    <!-- ModelType          = Auszuwertendes Modell -->
+    <!-- ObjTypeAnalysis    = Auszuwertendes Objekt -->
+    <!-- ObjTypeLink        = Objekt, an dem Hinterlegung des Modells gesucht wird -->
+    <!-- AttribCreator      = Attribut fuer Ersteller -->
+    <!-- AttribCreationDate = Attribut fuer Erstellungsdatum -->
+    <!-- Attrib1Type        = Attributwert #1 fuer Auswertung -->
+    <!-- Attrib2Type        = Attributwert #2 fuer Auswertung -->
+    <!-- Attrib3Type        = Attributwert #3 fuer Auswertung -->
+    <!-- AttribValue1       = Attributwert #1 fuer Auswertung - 1. Spalte von links (- -) -->
+    <!-- AttribValue2       = Attributwert #2 fuer Auswertung - 2. Spalte von links (-) -->
+    <!-- AttribValue3       = Attributwert #3 fuer Auswertung - mittlere Spalte (0) -->
+    <!-- AttribValue4       = Attributwert #4 fuer Auswertung - 2. Spalte von rechts (+) -->
+    <!-- AttribValue5       = Attributwert #5 fuer Auswertung - 1. Spalte von rechts (+ +) -->
+    <!-- StructEdges        = Strukturkanten fuer Hierarchie der auszuwertenden Objekte -->
+    <!-- ColorSelf          = Farbe Symbol Eigenes Unternehmen -->
+    <!-- ColorTarget        = Farbe Symbol Ziel -->
+    <!-- ColorCompetitor    = Farbe Symbol Wettbewerber -->
+    <MCF>
+        <ModelType>MT_OBJ_DGM</ModelType>
+        <ObjTypeAnalysis>OT_CRIT_FACT</ObjTypeAnalysis>
+        <ObjTypeLink>OT_BUSINESS_SEGMENT</ObjTypeLink>
+        <AttribCreator>AT_CREATOR</AttribCreator>
+        <AttribCreationDate>AT_CREAT_TIME_STMP</AttribCreationDate>
+        <Attrib1Type>AT_SUCCESS_ACTUAL</Attrib1Type>
+        <Attrib2Type>AT_SUCCESS_PLANNED</Attrib2Type>
+        <Attrib3Type>AT_SUCCESS_COMPETITOR</Attrib3Type>
+        <AttribValue1>AVT_SUCCESS_VERY_LOW</AttribValue1>
+        <AttribValue2>AVT_SUCCESS_LOW</AttribValue2>
+        <AttribValue3>AVT_SUCCESS_AVERAGE</AttribValue3>
+        <AttribValue4>AVT_SUCCESS_GREAT</AttribValue4>
+        <AttribValue5>AVT_SUCCESS_VERY_GREAT</AttribValue5>
+        <StructEdges>3;257;347</StructEdges>
+        <ColorSelf>#F48E20</ColorSelf>
+        <ColorTarget>#3A8931</ColorTarget>
+        <ColorCompetitor>#757471</ColorCompetitor>
+    </MCF>
+</ReportRegistry>
+
+

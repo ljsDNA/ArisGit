@@ -1,0 +1,123 @@
+/**
+ * Copyright (C) 1992-2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA,
+ * and/or its subsidiaries and/or its affiliates and/or their licensors.
+ *
+ * Use, reproduction, transfer, publication or disclosure is prohibited
+ * except as specifically provided for in your License Agreement with Software AG.
+ *
+ * Version: 10.0.22.0.3295151
+ *
+ * IMPORTANT NOTE:
+ *     Please note that this is a standard script provided with the product.
+ *     Any changes you make to this file will be overwritten during a product update and thus be irrecoverably lost.
+ *     If you want to adapt this script according to your individual needs, we urgently recommend that you create a copy of this file
+ *     and add your changes to the copy. The copied file will not be overwritten by a product update.
+ *     After a product update, it is advisable that you check your copied file against the updated version of the original file
+ *     and add all relevant changes or fixes to your copy.
+ */
+
+
+  var h = 60;
+  var w;
+
+  var posX, posY;
+  
+  var wkdclass;
+  
+  var positions = Array();
+  
+  for(i=0;i<objects.length;i++)
+  {
+    posX    = (offsetX+(objects[i][0][0]*factorX));
+    posY    = (offsetY-(objects[i][0][1]*factorY));
+    objname = objects[i][1];
+
+    if(objects[i][2]==2)
+    {
+      w         = 140;
+      wkdclass  = "wkd2";
+    }
+    else if(objects[i][2]==3)
+    {
+      w         = 160;
+      wkdclass  = "wkd3";
+    }
+    else
+//    if(objects[i][2]==1)
+    {
+      w         = 120;
+      wkdclass  = "wkd1";
+    }
+
+    posX -= (w/2);
+    posY -= (h/2);
+
+    if((posX+w)>maxX) posX = maxX-w;
+    if(posX<minX)     posX = minX;
+
+    if((posY+h)>maxY) posY = maxY-h;
+    if(posY<minY)     posY = minY;
+    
+    positions[i] = Array();
+    positions[i][0] = posX;
+    positions[i][1] = posY;
+    positions[i][2] = w;
+    positions[i][3] = h;
+    positions[i][4] = objname;
+    positions[i][5] = wkdclass;
+  }
+
+  var overlappers = Array();
+  var oc = 0;
+  var bHasOverlap;
+  for(i=0;i<positions.length;i++)
+  {
+    bHasOverlap = false;
+    oc = 0;
+    for(j=0;j<positions.length;j++)
+    {
+      if(i!=j && overlapps(positions[i],positions[j]))
+      {
+        //alert("overlapping "+positions[i][4]+" <-> "+positions[j][4]);
+        if(!bHasOverlap)
+        {
+          //alert("starting overlappers list for "+i);
+          bHasOverlap = true;
+          overlappers[i] = Array();
+          overlappers[i][0] = true;
+          oc = 1;
+        }
+        overlappers[i][oc++] = j;
+        //alert("adding overlapper for "+i+": "+j);
+      }
+    }
+    if(!bHasOverlap)
+    {
+      overlappers[i] = Array();
+      overlappers[i][0] = false;
+    }
+  }
+  
+  //alert(" "+positions.length+" positions");
+  
+  for(i=0;i<positions.length;i++)
+  { 
+    posX     = positions[i][0];
+    posY     = positions[i][1];
+    w        = positions[i][2];
+    h        = positions[i][3];
+    objname  = positions[i][4];
+    wkdclass = positions[i][5];
+    
+    document.write("<div id='wkdocc"+i+"' style='z-index:"+(100+i)+"; position:absolute; top:"+posY+"px; left:"+posX+"px; width:"+w+"px; height:"+h+"px;'>");
+    document.write("<table class='"+wkdclass+"' width='100%'");
+    if(overlappers[i][0]) 
+      document.write(" onmouseover=\"this.style.cursor='Hand'\" onclick='toggleOverlap("+i+")'>");
+    document.write("<tr height='"+h+"px' valign='center'><td class='wkdname'>"+objname+"</td></tr>");
+    document.write("</table></div>");
+    
+  }
+
+  var lastOverlapObject = -1;
+  var lastOverlapIdx    = -1;
+  

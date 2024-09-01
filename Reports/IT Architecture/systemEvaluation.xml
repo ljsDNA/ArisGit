@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 1992-2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA,
+    and/or its subsidiaries and/or its affiliates and/or their licensors.
+
+    Use, reproduction, transfer, publication or disclosure is prohibited
+    except as specifically provided for in your License Agreement with Software AG.
+
+    Version: 10.0.22.0.3295151
+
+-->
+<ReportRegistry>
+    <!-- ModelTypes         = Auszuwertendes Modell -->
+    <!-- ObjType            = Auszuwertendes Objekt -->
+    <!-- AttribCreator      = Attribut fuer Ersteller -->
+    <!-- AttribCreationDate	= Attribut fuer Erstellungsdatum -->
+    <!-- AttribX            = Attribut fuer X-Koordinaten -->
+    <!-- MinX               = Minimum X -->
+    <!-- MaxX               = Maximum X -->
+    <!-- DefaultX           = Standardwert X -->
+    <!-- AttribY            = Attribut fuer Y-Koordinaten -->
+    <!-- MinY               = Minimum Y -->
+    <!-- MaxY               = Maximum Y -->
+    <!-- DefaultY           = Standardwert Y -->
+    <!-- NumCharsForWidth2  = Maximale Laenge Teilstring ohne Leerzeichen im Objektnamen, ab denen die AWST-Symbolgrösse 2 verwendet wird -->
+    <!-- NumCharsForWidth3  = Maximale Laenge Teilstring ohne Leerzeichen im Objektnamen, ab denen die AWST-Symbolgrösse 3 verwendet wird -->
+    <SYSTEMEVALUATION MinX="4754" MaxX="4758" DefaultX="0" MinY="0" MaxY="250000" DefaultY="0" NumCharsForWidth2="10" NumCharsForWidth3="13">
+        <ModelTypes>21;13;18;50;51;100;103;134;140;154;173;12</ModelTypes>
+        <ObjType>OT_APPL_SYS_TYPE</ObjType>
+        <AttribCreator>AT_CREATOR</AttribCreator>
+        <AttribCreationDate>AT_CREAT_TIME_STMP</AttribCreationDate>
+        <AttribX>AT_CRITICALITY</AttribX>
+        <AttribY>AT_COST_COMP_CNT</AttribY>
+    </SYSTEMEVALUATION>
+</ReportRegistry>
+

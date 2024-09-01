@@ -1,0 +1,59 @@
+/**
+ * Copyright (C) 1992-2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA,
+ * and/or its subsidiaries and/or its affiliates and/or their licensors.
+ *
+ * Use, reproduction, transfer, publication or disclosure is prohibited
+ * except as specifically provided for in your License Agreement with Software AG.
+ *
+ * Version: 10.0.22.0.3295151
+ *
+ * IMPORTANT NOTE:
+ *     Please note that this is a standard script provided with the product.
+ *     Any changes you make to this file will be overwritten during a product update and thus be irrecoverably lost.
+ *     If you want to adapt this script according to your individual needs, we urgently recommend that you create a copy of this file
+ *     and add your changes to the copy. The copied file will not be overwritten by a product update.
+ *     After a product update, it is advisable that you check your copied file against the updated version of the original file
+ *     and add all relevant changes or fixes to your copy.
+ */
+
+
+body              { background-image:url(<--process.gif-->); background-repeat:no-repeat; background-position:bottom right;
+                    font-family:Arial; font-size:12px; font-style:normal; font-weight:nromal; font-style:normal; }
+
+table             { border-collapse:collapse; margin:0px; padding:0px; }
+
+table.heftable    { border-collapse:collapse; margin:0px; padding:0px; }
+
+table.txttable    { border-collapse:collapse; margin:0px; padding:0px; }
+
+td                { font-family:Arial; font-size:12px; font-style:normal; font-weight:nromal; font-style:normal; }
+td.noborder       { border-width:0px; border-style:solid;}
+td.txtarea        { }
+td.paintarea      { background-color:#EEEEEE; }
+
+tr.categrow       { height:28px; }
+tr.datarow        { height:45px; }
+
+td.header         { text-align:left; padding:3px 10px 3px 10px; }
+td.hefheader      { height:60px; }
+td.allcategheader { height:30px; }
+
+td.datarowcell1   { padding:0px 5px 0px 20px;font-family:Arial; font-size:16px; font-weight:bold; font-style:normal; }
+td.datarowcell2   { padding:0px 5px 0px 50px;font-family:Arial; font-size:16px; font-weight:bold; font-style:normal; }
+td.datarowcell3   { padding:0px 5px 0px 100px;font-family:Arial; font-size:16px; font-weight:bold; font-style:normal; }
+
+td.categheader    { background-color:#A8A8A8; text-align:center; font-family:Arial; font-size:18px; font-style:normal; font-weight:normal; font-style:normal; }
+
+h1                { font-family:Arial; font-size:20px; font-style:normal; font-weight:bold; font-style:normal; }
+h2                { font-family:Arial; font-size:16px; font-style:normal; font-weight:bold; font-style:italic; }
+
+.rahmen_normal             { border-color:#000000; border-width:2px; border-style:solid; }
+.rahmen_gestrichelt1       { border-color:#000000; border-width:2px 1px 2px 1px; border-top-style:solid; border-right-style:dashed; border-bottom-style:solid; }
+.rahmen_gestrichelt2       { border-color:#000000; border-width:2px 2px 2px 1px; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; }
+
+td.tablehead      { background-color:#A8A8A8; font-family:Arial; font-size:18px; font-style:normal; font-weight:normal; font-style:normal; }
+
+li.hef1 { font-family:Arial; font-size:16px; font-style:normal; font-weight:normal; }
+li.hef2 { font-family:Arial; font-size:16px; font-style:normal; font-weight:normal; }
+li.hef3 { font-family:Arial; font-size:16px; font-style:normal; font-weight:normal; }
+li.hef4 { font-family:Arial; font-size:16px; font-style:normal; font-weight:normal; }

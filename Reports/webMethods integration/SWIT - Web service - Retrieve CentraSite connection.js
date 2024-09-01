@@ -1,0 +1,77 @@
+/**
+ * Copyright (C) 1992-2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA,
+ * and/or its subsidiaries and/or its affiliates and/or their licensors.
+ *
+ * Use, reproduction, transfer, publication or disclosure is prohibited
+ * except as specifically provided for in your License Agreement with Software AG.
+ *
+ * Version: 10.0.22.0.3295151
+ *
+ * IMPORTANT NOTE:
+ *     Please note that this is a standard script provided with the product.
+ *     Any changes you make to this file will be overwritten during a product update and thus be irrecoverably lost.
+ *     If you want to adapt this script according to your individual needs, we urgently recommend that you create a copy of this file
+ *     and add your changes to the copy. The copied file will not be overwritten by a product update.
+ *     After a product update, it is advisable that you check your copied file against the updated version of the original file
+ *     and add all relevant changes or fixes to your copy.
+ */
+
+var sModelidProps= Context.getProperty("modelId"); 
+var aModelids = new Array();
+
+if (sModelidProps != null) 
+{
+    aModelids = sModelidProps.split("\b");
+}
+
+var out = new XMLFormattedOut();
+var csids;
+var models = "empty";
+
+var csurl = getCSUrl(ArisData.getActiveDatabase());
+for (var t = 0; t < aModelids.length; t++)
+{
+    var sModelId = aModelids[t].substring(2);
+    var model = ArisData.getActiveDatabase().FindGUID(sModelId);
+    out.addElement("models", "M:" + sModelId);
+    out.addElement("csids", getCSId(model));
+    models += aModelids[t];
+}
+
+out.addElement("csurl", csurl);
+out.setSuccess(true);
+out.write();
+
+function getCSId(model)
+{
+    if (model != null && model.IsValid())
+    {
+        var attr = model.Attribute(Constants.AT_CENTRASITE_ID, Context.getSelectedLanguage());    
+        return attr.getValue();
+    }
+    return "";
+}
+
+function getCSUrl(database)
+{
+    var attr = database.Attribute(Constants.AT_CENTRASITE_SERVER, Context.getSelectedLanguage());    
+    var url = attr.getValue();
+    try{
+        var webMethodsIntegrationComponent = Context.getComponent("webMethodsIntegration");
+        var internalURL = webMethodsIntegrationComponent.getCSUrl(database);
+        if(internalURL != null){
+            return internalURL;
+        }else{
+            return url;
+        }          
+    }catch(e){
+        return url;      
+    }
+    return url;
+}
+
+function handleResult(p_errorMessage) {
+	var errOut = new XMLFormattedOut();
+	errOut.setSuccess(false, p_errorMessage);
+	errOut.write();
+}
